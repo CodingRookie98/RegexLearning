@@ -1,0 +1,23 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>img/RegexIcon.png</file>
+        <file>img/background.jpg</file>
+    </qresource>
+    <qresource prefix="/svg">
+        <file>svg/RegexIcon.svg</file>
+        <file>svg/homePage.svg</file>
+        <file>svg/Practice.svg</file>
+        <file>svg/RegexTest.svg</file>
+        <file>svg/arrow-left.svg</file>
+        <file>svg/arrow-right.svg</file>
+        <file>svg/eye_close.svg</file>
+        <file>svg/eye_open.svg</file>
+        <file>svg/clear.svg</file>
+        <file>svg/file-open.svg</file>
+        <file>svg/paste.svg</file>
+    </qresource>
+    <qresource prefix="/data">
+        <file>data/homePage.md</file>
+        <file>data/TopicInfo.json</file>
+    </qresource>
+</RCC>

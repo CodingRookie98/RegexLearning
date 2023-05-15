@@ -1,0 +1,37 @@
+{
+    "topicInfoArray": [
+        {
+            "id": 1,
+            "title": "介绍",
+            "text": "Understand? OK or NOT",
+            "answer": "OK"
+        },
+        {
+            "id": 2,
+            "title": "什么是「正则表达式」？",
+            "text": [
+                "readme.md",
+                "document.pdf",
+                "image.png",
+                "music.mp4",
+                "manual.pdf"
+            ],
+            "answer": "^\\w+\\.pdf$"
+        },
+        {
+            "id": 15,
+            "title": "练习：数字范围",
+            "text": [
+                "0123456789",
+                "9876543210"
+            ],
+            "answer": "[2-7]"
+        },
+        {
+            "id": 18,
+            "title": "星号 *",
+            "text": "br ber beer",
+            "answer": "be*r"
+        }
+    ]
+}

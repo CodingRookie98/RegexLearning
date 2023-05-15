@@ -1,0 +1,42 @@
+<RCC>
+    <qresource prefix="/topicDescription">
+        <file>topic_description/1.md</file>
+        <file>topic_description/15.md</file>
+        <file>topic_description/2.md</file>
+        <file>topic_description/3.md</file>
+        <file>topic_description/4.md</file>
+        <file>topic_description/5.md</file>
+        <file>topic_description/6.md</file>
+        <file>topic_description/7.md</file>
+        <file>topic_description/8.md</file>
+        <file>topic_description/9.md</file>
+        <file>topic_description/10.md</file>
+        <file>topic_description/11.md</file>
+        <file>topic_description/12.md</file>
+        <file>topic_description/13.md</file>
+        <file>topic_description/14.md</file>
+        <file>topic_description/16.md</file>
+        <file>topic_description/17.md</file>
+        <file>topic_description/18.md</file>
+        <file>topic_description/19.md</file>
+        <file>topic_description/20.md</file>
+        <file>topic_description/21.md</file>
+        <file>topic_description/22.md</file>
+        <file>topic_description/23.md</file>
+        <file>topic_description/24.md</file>
+        <file>topic_description/25.md</file>
+        <file>topic_description/26.md</file>
+        <file>topic_description/27.md</file>
+        <file>topic_description/28.md</file>
+        <file>topic_description/29.md</file>
+        <file>topic_description/30.md</file>
+        <file>topic_description/31.md</file>
+        <file>topic_description/32.md</file>
+        <file>topic_description/33.md</file>
+        <file>topic_description/34.md</file>
+        <file>topic_description/35.md</file>
+        <file>topic_description/36.md</file>
+        <file>topic_description/37.md</file>
+        <file>topic_description/38.md</file>
+    </qresource>
+</RCC>
