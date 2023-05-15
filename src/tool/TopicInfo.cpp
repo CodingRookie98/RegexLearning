@@ -41,7 +41,7 @@ QString TopicInfo::get_answer() const {
     return *answer;
 }
 
-std::string TopicInfo::get_matchedAnswerText() const {
+QString TopicInfo::get_matchedAnswerText() const {
     return *matchedAnswerText;
 }
 
@@ -63,6 +63,6 @@ void TopicInfo::set_answer(const QString &_answer) {
     answer = std::make_shared<QString>(_answer);
 }
 
-void TopicInfo::set_matchedAnswerText(const std::string &_matchedAnswerText) {
-    matchedAnswerText = std::make_shared<std::string>(_matchedAnswerText);
+void TopicInfo::set_matchedAnswerText(const QString &_matchedAnswerText) {
+    matchedAnswerText = std::make_shared<QString>(_matchedAnswerText);
 }

@@ -24,7 +24,7 @@ private:
     std::shared_ptr<QString> answer = nullptr;
 
     // * 题目答案匹配的所有结果
-    std::shared_ptr<std::string> matchedAnswerText = nullptr;
+    std::shared_ptr<QString> matchedAnswerText = nullptr;
 
 public:
     TopicInfo(QListWidget *parent = nullptr);
@@ -35,13 +35,13 @@ public:
     QString get_title() const;
     std::vector<QString> get_text() const;
     QString get_answer() const;
-    std::string get_matchedAnswerText() const;
+    QString get_matchedAnswerText() const;
 
     void set_id(const int &_id);
     void set_title(const QString &_title);
     void set_text(const QString &_text);
     void set_answer(const QString &_answer);
-    void set_matchedAnswerText(const std::string &_matchedAnswerText);
+    void set_matchedAnswerText(const QString &_matchedAnswerText);
 };
 
 #endif

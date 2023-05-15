@@ -1,18 +1,13 @@
 #include "helperFunc.h"
+#include "tool/helperFunc.h"
+#include <qregularexpression.h>
+#include <regex>
+#include <string>
+#include <vector>
 
-std::string HtmlHeadRed   = "<font color=\"red\">";
-std::string HtmlHeadGreen = "<font color=\"green\">";
-std::string HtmlTail      = "</font>";
-
-bool is_valid_regex(const std::string &pattern) {
-    try {
-        std::regex re(pattern); // 构造正则表达式对象
-        return true;            // 如果没有抛出异常，说明正则表达式合法
-    } catch (std::regex_error &e) {
-        // qDebug() << "Invalid regex: " << e.what();; // 打印错误信息
-        return false; // 如果抛出异常，说明正则表达式不合法
-    }
-}
+QString HtmlHeadRed   = "<font color=\"red\">";
+QString HtmlHeadGreen = "<font color=\"green\">";
+QString HtmlTail      = "</font>";
 
 QJsonObject readJson(const QString &fileName) {
     // 读取json文件
@@ -36,16 +31,22 @@ QJsonObject readJson(const QString &fileName) {
     return jsonObject;
 }
 
-void regexReplaceAndSetColor(std::vector<std::string> &vec,
-                             const std::regex &pattern,
+void regexReplaceAndSetColor(std::vector<QString> &vec,
+                             const QRegularExpression &pattern,
                              const bool color) {
-    for (auto &str : vec) {
-        if (color == true) {
-            str = std::regex_replace(str, pattern, HtmlHeadGreen + "$&" + HtmlTail);
+    std::vector<std::string> stdStr = convertQstringToStdstr(vec);
+    std::regex stdReg(pattern.pattern().toStdString());
+    for (auto &str : stdStr) {
+        if (color) {
+            str = std::regex_replace(str, stdReg,
+                                     HtmlHeadGreen.toStdString() + "$&" + HtmlTail.toStdString());
         } else {
-            str = std::regex_replace(str, pattern, HtmlHeadRed + "$&" + HtmlTail);
+            str = std::regex_replace(str, stdReg,
+                                     HtmlHeadRed.toStdString() + "$&" + HtmlTail.toStdString());
         }
     }
+    vec.clear();
+    vec = convertStdstrToQstring(stdStr);
 }
 
 std::vector<std::string>

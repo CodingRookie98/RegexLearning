@@ -2,6 +2,12 @@
 #include "tool/helperFunc.h"
 #include "ui_RegexPracWindow.h"
 #include "./MatchTextDisplay.h"
+#include <qbrush.h>
+#include <qcolor.h>
+#include <qicon.h>
+#include <qpalette.h>
+#include <qregularexpression.h>
+#include <qtmetamacros.h>
 #include <qurl.h>
 
 const QIcon openEye(":/svg/svg/eye_open.svg");
@@ -35,6 +41,12 @@ void RegexPracWindow::init() {
     // 设置答案文本框默认为隐藏
     ui->label_Answer->setVisible(false);
 
+    // * 设置题目错误提醒信息框为不可见
+    ui->ErrorTopicInfo->setVisible(false);
+
+    // * 设置正则错误提醒框默认为不可见
+    ui->regexError->setVisible(false);
+
     ui->lineEdit_regexInput->setFixedHeight(40);
 
     // * 设置答案显示按钮的鼠标悬停提示文字
@@ -49,26 +61,7 @@ void RegexPracWindow::PageEvent() {
 }
 
 void RegexPracWindow::ListWidgetEvent() {
-    // 当点击liswidgetItem时设置文本匹配框文字
-    connect(ui->listWidget, &QListWidget::itemClicked, ui->listWidget, [&]() {
-        // 进行下行转换，父类指针实际指向子类，所以安全
-        TopicInfo *cur = dynamic_cast<TopicInfo *>(ui->listWidget->currentItem());
-        // 如果匹配的答案文本为空
-        if (cur->get_matchedAnswerText().empty()) {
-            // 设置提醒文本
-            ui->matchText->setText("本题正确正则表达式有错，请联系管理员修改！");
-            ui->label_regex->setVisible(false);
-            // 设置正则输入框不可输入
-            ui->lineEdit_regexInput->setVisible(false);
-        } else {
-            ui->matchText->setMatchText(cur->get_text());
-            ui->lineEdit_regexInput->setVisible(true);
-            ui->label_regex->setVisible(true);
-        }
-        ui->label_Answer->setVisible(false);
-    });
-
-    // 当item改变时
+    // 当listItem改变时
     connect(ui->listWidget, &QListWidget::currentItemChanged, ui->listWidget, [&](QListWidgetItem *cur) {
         TopicInfo *item = dynamic_cast<TopicInfo *>(cur);
 
@@ -84,18 +77,36 @@ void RegexPracWindow::ListWidgetEvent() {
 
         // ! 请勿随便改动此处代码逻辑
         // 如果匹配的答案文本为空
-        if (item != nullptr && item->get_matchedAnswerText().empty()) {
+        if (item != nullptr && item->get_matchedAnswerText().isEmpty()) {
             // 设置提醒文本
-            ui->matchText->setText(QString("本题正确正则表达式有错，请联系管理员修改！"));
-            ui->label_regex->setVisible(false);
-            // 设置正则输入框不可输入
+            ui->ErrorTopicInfo->setVisible(true);
+            ui->ErrorTopicInfo->setText("当前题目答案有错, 请联系管理员修改");
+
+            // 设置正则输入框不可见
             ui->lineEdit_regexInput->setVisible(false);
-        } else if (item != nullptr && !item->get_matchedAnswerText().empty()) {
+            ui->label_regex->setVisible(false);
+
+            // * 清除匹配文本框中的内容并设置其为不可见
+            ui->matchText->clear();
+            ui->matchText->setVisible(false);
+            ui->label_matchedText->setVisible(false);
+            ui->regexError->setVisible(false);
+
+            // * 设置当前listItem背景色为红色
+            ui->listWidget->currentItem()->setBackground(QBrush(QColor("red")));
+        } else if (item != nullptr && item->get_matchedAnswerText().isEmpty() != true) {
             ui->matchText->setMatchText(item->get_text());
             ui->lineEdit_regexInput->setVisible(true);
             ui->label_regex->setVisible(true);
-            if (ui->label_Answer != nullptr) {
-                ui->label_Answer->setVisible(false);
+            ui->matchText->setVisible(true);
+            ui->label_matchedText->setVisible(true);
+
+            ui->ErrorTopicInfo->setVisible(false);
+            ui->regexError->setVisible(false);
+
+            // * 发送答案按钮点击信号，切换答案显示状态及显示答案按钮状态
+            if (ui->label_Answer->isVisible()) {
+                emit ui->toolButton_openAnswer->clicked();
             }
         }
     });
@@ -103,56 +114,59 @@ void RegexPracWindow::ListWidgetEvent() {
 
 void RegexPracWindow::regexEditEvent() {
     // * 当正则表达式输入框文字内容改变时
-    connect(ui->lineEdit_regexInput, &QLineEdit::textEdited, ui->matchText, [&]() {
-        TopicInfo *cur                            = dynamic_cast<TopicInfo *>(ui->listWidget->currentItem());
-        QString Answer                            = cur->get_answer();
-        QString inputText                         = ui->lineEdit_regexInput->text();
-        std::vector<QString> textMatch            = cur->get_text();
-        std::vector<std::string> stdStr_textMatch = convertQstringToStdstr(textMatch);
-        std::regex regexAnswer(Answer.toStdString());
+    connect(ui->lineEdit_regexInput, &QLineEdit::textChanged, ui->matchText, [&]() {
+        TopicInfo *cur                 = dynamic_cast<TopicInfo *>(ui->listWidget->currentItem());
+        QString Answer                 = cur->get_answer();
+        QString inputText              = ui->lineEdit_regexInput->text();
+        std::vector<QString> textMatch = cur->get_text();
+        QRegularExpression regexAnswer(Answer);
 
         ui->matchText->setMatchText(textMatch);
+
+        ui->regexError->setVisible(false);
 
         // * 若用户输入的正则表达式与答案一致
         if (Answer == inputText) {
             // * 将所有匹配结果颜色设为绿色
-            regexReplaceAndSetColor(stdStr_textMatch, regexAnswer, true);
-            std::vector<QString> QStr = convertStdstrToQstring(stdStr_textMatch);
-            ui->matchText->setMatchText(QStr);
-            // todo 答案正确提醒
-
+            regexReplaceAndSetColor(textMatch, regexAnswer, true);
+            ui->matchText->setMatchText(textMatch);
+            // * 答案正确提醒
+            ui->regexError->setStyleSheet("background: green;");
+            ui->regexError->setText("答案正确");
+            ui->regexError->setVisible(true);
+            ui->listWidget->currentItem()->setIcon(QIcon(":/svg/svg/correct.svg"));
         } else {
-            // * 如果输入的正则表达式合法
-            std::string input = inputText.toStdString();
-            if (is_valid_regex(input)) {
-                std::regex inputReg(input);
-
+            QRegularExpression inputRegex(inputText);
+            // * 如果输入的正则表达式合法且输入的正则表达式不为空
+            if (inputRegex.isValid() && inputText.isEmpty() == false) {
                 // * 获得用户输入的正则表达式匹配的结果
-                std::string userMatched;
-                for (const auto &str : stdStr_textMatch) {
-                    for (std::sregex_iterator it(str.cbegin(), str.cend(),
-                                                 inputReg),
-                         end;
-                         it != end; ++it) {
-                        userMatched.append(it->str());
+                QString userMatched;
+                for (const auto &qstr : textMatch) {
+                    QRegularExpressionMatchIterator iter_match = inputRegex.globalMatch(qstr);
+                    while (iter_match.hasNext()) {
+                        userMatched.append(iter_match.next().captured(0));
                     }
                 }
-
                 // * 如果用户的正则匹配结果和答案匹配结果不一致
                 if (userMatched != cur->get_matchedAnswerText()) {
                     // * 将用户所有匹配的结果颜色设为红色
-                    regexReplaceAndSetColor(stdStr_textMatch, inputReg, false);
-                    std::vector<QString> QStr = convertStdstrToQstring(stdStr_textMatch);
-                    ui->matchText->setMatchText(QStr);
+                    regexReplaceAndSetColor(textMatch, inputRegex, false);
+                    ui->matchText->setMatchText(textMatch);
 
                 } else { // * 结果一致，将结果颜色设为绿色
-                    regexReplaceAndSetColor(stdStr_textMatch, inputReg, true);
-                    std::vector<QString> QStr = convertStdstrToQstring(stdStr_textMatch);
-                    ui->matchText->setMatchText(QStr);
-                    // Todo 答案正确提醒
+                    regexReplaceAndSetColor(textMatch, inputRegex, true);
+                    ui->matchText->setMatchText(textMatch);
+                    // * 答案正确提醒
+                    ui->regexError->setStyleSheet("background: green;");
+                    ui->regexError->setText("答案正确");
+                    ui->regexError->setVisible(true);
+                    ui->listWidget->currentItem()->setIcon(QIcon(":/svg/svg/correct.svg"));
                 }
-            } else {
-                // todo 输入正则表达式非法提醒
+            } else if (inputRegex.isValid() == false && inputText.isEmpty() == false) {
+                // * 输入正则表达式非法提醒
+                ui->regexError->setStyleSheet("background: red;");
+                ui->regexError->setText(inputRegex.errorString());
+                ui->regexError->setVisible(true);
             }
         }
     });
@@ -186,18 +200,23 @@ void RegexPracWindow::ButtonEvent() {
         if (cur != nullptr && cur->get_id() != begin->get_id()) {
             ui->listWidget->setCurrentRow(ui->listWidget->currentRow() - 1);
         }
-
-        ui->label_Answer->setVisible(false);
+        // * 发送答案按钮点击信号，切换答案显示状态及显示答案按钮状态
+        if (ui->label_Answer->isVisible()) {
+            emit ui->toolButton_openAnswer->clicked();
+        }
     });
 
     // 当点击下一个按钮时
     connect(ui->pushButton_Next, &QToolButton::clicked, ui->listWidget, [&]() {
         const TopicInfo *cur = dynamic_cast<TopicInfo *>(ui->listWidget->currentItem());
         auto end             = ui->listWidget->get_topicInfos()->cend();
+
         if (cur != nullptr && cur->get_id() != (--end)->get_id()) {
             ui->listWidget->setCurrentRow(ui->listWidget->currentRow() + 1);
         }
-
-        ui->label_Answer->setVisible(false);
+        // * 发送答案按钮点击信号，切换答案显示状态及显示答案按钮状态
+        if (ui->label_Answer->isVisible()) {
+            emit ui->toolButton_openAnswer->clicked();
+        }
     });
 }

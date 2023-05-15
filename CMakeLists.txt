@@ -15,6 +15,8 @@ set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_CURRENT_SOURCE_DIR}/bin/
 
 set ( CMAKE_INSTALL_PREFIX ./ )
 
+# add_compile_definitions ( _DEBUG_ )
+
 find_package ( QT NAMES Qt6 REQUIRED COMPONENTS Widgets )
 find_package ( Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets )
 

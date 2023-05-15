@@ -29,6 +29,7 @@ RegexTestWindow::~RegexTestWindow() {
 }
 
 void RegexTestWindow::init() {
+    ui->RegexInput->setFixedHeight(40);
     ui->labelTextMatched->setFixedHeight(ui->btnPasteText->height());
     this->clipboard_1 = QApplication::clipboard();
     ui->ErrorDisplay->setVisible(false);

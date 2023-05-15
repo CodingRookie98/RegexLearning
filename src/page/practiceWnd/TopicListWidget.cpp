@@ -1,6 +1,7 @@
 
 #include <QJsonValue>
 #include <QJsonArray>
+#include <qregularexpression.h>
 #include "TopicListWidget.h"
 #include "tool/helperFunc.h"
 
@@ -18,8 +19,6 @@ TopicListWidget::TopicListWidget() {
 }
 
 TopicListWidget::~TopicListWidget() {
-    // qDebug() << "TopicListWidget dtr";
-
     // *
     this->setCurrentRow(-1);
 
@@ -56,10 +55,11 @@ void TopicListWidget::init_TopicInfos() {
             if (baseValue.type() == QJsonValue::Object) {
                 QJsonObject baseObject = baseValue.toObject();
 
-                // * 初始化
+                // * 初始化id和title
                 info.set_id(int(baseObject.value("id").toInt()));
                 info.set_title(QString(baseObject.value("title").toString()));
 
+                // * 初始化匹配待匹配文本
                 QJsonValue text_value = baseObject.value("text");
                 if (text_value.type() == QJsonValue::Array) {
                     QJsonArray textArray = text_value.toArray();
@@ -71,48 +71,32 @@ void TopicListWidget::init_TopicInfos() {
                     info.set_text(text_value.toString());
                 }
 
+                // * 初始化答案正则匹配到的文本
                 info.set_answer(QString(baseObject.value("answer").toString()));
-
-                std::string strInputReg = baseObject.value("answer").toString().toStdString();
+                QRegularExpression answerRegex(baseObject.value("answer").toString());
                 // * 检查答案正则表达式是否合法
-                if (is_valid_regex(strInputReg)) {
+                if (answerRegex.isValid()) {
                     // * 获得当前题目所有匹配结果
                     std::vector<QString> toBeMatced             = info.get_text();
                     std::vector<std::string> stdStr_tobeMatched = convertQstringToStdstr(toBeMatced);
-                    std::regex inputReg(strInputReg);
-                    std::string allMatched;
+                    QString allMatched;
 
-                    for (auto &str : stdStr_tobeMatched) {
-                        for (std::sregex_iterator it(str.begin(), str.end(),
-                                                     inputReg),
-                             end;
-                             it != end; ++it) {
-                            allMatched.append(it->str());
+                    for (auto const &qstr : toBeMatced) {
+                        QRegularExpressionMatchIterator iter_match =
+                            answerRegex.globalMatch(qstr);
+                        while (iter_match.hasNext()) {
+                            allMatched.append(iter_match.next().captured(0));
                         }
                     }
-                    if (allMatched.empty() != true) {
+                    // * 如果匹配到的文本不为空
+                    if (allMatched.isEmpty() != true) {
                         info.set_matchedAnswerText(allMatched);
-                    } else {                                                                                                                       // * 若匹配到的文本为空，则弹出警告
-                        info.set_matchedAnswerText(std::string(""));
-                        QMessageBox msg(this);                                                                                                     // 创建对话框
-                        msg.setWindowTitle("Warning");                                                                                             // 设置对话框标题
-                        msg.setText(QString::number(info.get_id()) + "、" + info.get_title() + "\n" + "正则答案没有匹配到任何文本，请联系管理员"); // 设置对话框的提示信息
-                        msg.setIcon(QMessageBox::Warning);                                                                                         // 设置对话框的图标
-                        // 设置对话框的按钮
-                        msg.setStandardButtons(QMessageBox::Ok);
-                        msg.exec();
+                    } else { // * 若匹配到的文本为空，则弹出警告
+                        info.set_matchedAnswerText(QString(""));
                     }
-                } else { // * 若正则表达式非法弹出消息对话框提示用户
+                } else { // * 若正则表达式非法
                     // 设置答案匹配文本为空
-                    info.set_matchedAnswerText(std::string(""));
-                    // 强制用户选择
-                    QMessageBox msg(this);                                                                                   // 创建对话框
-                    msg.setWindowTitle("Warning");                                                                           // 设置对话框标题
-                    msg.setText(QString::number(info.get_id()) + "、" + info.get_title() + "\n" + "错误答案，请联系管理员"); // 设置对话框的提示信息
-                    msg.setIcon(QMessageBox::Warning);                                                                       // 设置对话框的图标
-                    // 设置对话框的按钮
-                    msg.setStandardButtons(QMessageBox::Ok);
-                    msg.exec();
+                    info.set_matchedAnswerText(QString(""));
                 }
             }
             this->topicInfos->push_back(info);

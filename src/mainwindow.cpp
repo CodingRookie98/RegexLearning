@@ -3,11 +3,6 @@
 #include "./ui_mainwindow.h"
 #include "RegexPracWindow.h"
 #include "qbuttongroup.h"
-#include <QFile>
-#include <QOverload>
-#include <QAbstractButton>
-#include <qabstractbutton.h>
-#include <qtypes.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -29,15 +24,13 @@ void MainWindow::init() {
     this->btnGroup.addButton(ui->btnPrac, 1);
     this->btnGroup.addButton(ui->btnRegexTest, 2);
 
-    QFile qssFile(":/qss/style.qss");           // 1.
-    if (qssFile.open(QFile::ReadOnly)) {        // 2.
-        this->setStyleSheet(qssFile.readAll()); // 3.
-    }
-    qssFile.close();                            // 4.
-
     this->setMinimumWidth(1000);
     ui->stackedWidget->setCurrentIndex(0);
 
+    // QFile qssFile("./res/FluentUI/QMainWindow.qss");
+    // if (qssFile.open(QFile::ReadOnly)) {
+    //     this->setStyleSheet(qssFile.readAll());
+    // }
     leftSideBarEvent();
 }
 
