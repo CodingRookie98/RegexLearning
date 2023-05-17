@@ -59,6 +59,9 @@ void TopicListWidget::init_TopicInfos() {
                 info.set_id(int(baseObject.value("id").toInt()));
                 info.set_title(QString(baseObject.value("title").toString()));
 
+                // * 初始化description
+                info.set_description(baseObject.value("description").toString());
+
                 // * 初始化匹配待匹配文本
                 QJsonValue text_value = baseObject.value("text");
                 if (text_value.type() == QJsonValue::Array) {

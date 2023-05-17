@@ -1,5 +1,6 @@
 
 #include "./topicinfo.h"
+#include <memory>
 
 TopicInfo::TopicInfo(QListWidget *parent) :
     QListWidgetItem(parent) {
@@ -26,7 +27,12 @@ int TopicInfo::get_id() const {
 
 QString TopicInfo::get_title() const {
     return *title;
-};
+}
+
+QString TopicInfo::get_description() const
+    {
+    return *description;
+    };
 
 //
 std::vector<QString> TopicInfo::get_text() const {
@@ -51,6 +57,11 @@ void TopicInfo::set_id(const int &_id) {
 
 void TopicInfo::set_title(const QString &_title) {
     title = std::make_shared<QString>(_title);
+}
+
+void TopicInfo::set_description(const QString &_description)
+{
+    description = std::make_shared<QString>(_description);
 }
 
 void TopicInfo::set_text(const QString &_text) {

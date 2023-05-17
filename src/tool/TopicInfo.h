@@ -3,6 +3,8 @@
 #define _TOPICINFO_H_
 
 #include <QListWidgetItem>
+#include <cstddef>
+#include <memory>
 #include <string>
 #include <QString>
 
@@ -13,6 +15,9 @@ private:
 
     // * 题目标题
     std::shared_ptr<QString> title = nullptr;
+
+    // * 题目描述
+    std::shared_ptr<QString> description = nullptr;
 
     // * 题目待匹配文本
     std::shared_ptr<
@@ -33,12 +38,14 @@ public:
 
     int get_id() const;
     QString get_title() const;
+    QString get_description() const;
     std::vector<QString> get_text() const;
     QString get_answer() const;
     QString get_matchedAnswerText() const;
 
     void set_id(const int &_id);
     void set_title(const QString &_title);
+    void set_description(const QString &_description);
     void set_text(const QString &_text);
     void set_answer(const QString &_answer);
     void set_matchedAnswerText(const QString &_matchedAnswerText);

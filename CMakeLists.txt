@@ -47,7 +47,6 @@ qt_add_executable ( RegexLearning
     MANUAL_FINALIZATION
     ${SOURCES_CPP_H_UI}
     ./res/res.qrc
-    ./res/data/topicDescription.qrc
     ./res/StyleSheet.qrc
 )
 

@@ -12,8 +12,8 @@
 
 const QIcon openEye(":/svg/svg/eye_open.svg");
 const QIcon closeEye(":/svg/svg/eye_close.svg");
-const QString fileHead("qrc:/topicDescription/topic_description/");
-const QString fileExt(".md");
+const QString mdTitleHead("# ");
+const QString lineBreak("\n");
 
 RegexPracWindow::RegexPracWindow(QWidget *parent) :
     QWidget(parent),
@@ -31,14 +31,13 @@ RegexPracWindow::~RegexPracWindow() {
 }
 
 void RegexPracWindow::init() {
-    ui->description->setSource(QUrl("qrc:/topicDescription/topic_description/1.md"));
-
     TopicInfo *cur = dynamic_cast<TopicInfo *>(ui->listWidget->currentItem());
     ui->matchText->setMatchText(cur->get_text());
+    ui->description->setMarkdown(mdTitleHead + cur->get_title() + lineBreak + cur->get_description());
 
     ui->description->setAlignment(Qt::AlignCenter);
 
-    // 设置答案文本框默认为隐藏
+    // * 设置答案文本框默认为隐藏
     ui->label_Answer->setVisible(false);
 
     // * 设置题目错误提醒信息框为不可见
@@ -67,10 +66,8 @@ void RegexPracWindow::ListWidgetEvent() {
 
         // * 设置题目描述
         if (item != nullptr && item->get_id()) {
-            QUrl url = fileHead + QString::number(item->get_id()) + fileExt;
-            // qDebug() << url;
             if (ui->description != nullptr) {
-                ui->description->setSource(url);
+                ui->description->setMarkdown(mdTitleHead + item->get_title() + lineBreak + item->get_description());
                 ui->description->setAlignment(Qt::AlignCenter);
             }
         }

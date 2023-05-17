@@ -23,7 +23,7 @@ private:
     const QClipboard *clipboard_1 = nullptr;
 
     const QString fileRoot   = "\\";                 // 文件系统根目录
-    const QString fileFliter = "所有文件(*txt *md)"; // 文件类型
+    const QString fileFliter = "所有文件(*txt *md *json)"; // 文件类型
     QString preFileDir;                              // 记录上一次打开的文件目录
     QString fileName;                                // 文件路径
     QFile textFile;                                  // 文本文件
