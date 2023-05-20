@@ -2,7 +2,6 @@
 #include "tool/helperFunc.h"
 #include "ui_RegexPracWindow.h"
 #include "./MatchTextDisplay.h"
-#include <minwindef.h>
 #include <qbrush.h>
 #include <qcolor.h>
 #include <qicon.h>
