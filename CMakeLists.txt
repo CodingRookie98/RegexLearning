@@ -15,31 +15,31 @@ if ( ${CMAKE_SYSTEM_NAME} MATCHES "Linux" )
     set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/bin/Debug-Linux )
     Set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/bin/Release-Linux )
     set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_CURRENT_SOURCE_DIR}/bin/minSizeRe-Linux )
+
+    set ( Boost_DIR "./3rdparty/boost-regex/lib-x64-linux/cmake/Boost-1.82.0" )
+    set ( Boost_USE_STATIC_RUNTIME ON )
 elseif ( ${CMAKE_SYSTEM_NAME} MATCHES "Windows" )
     # Windows系统
     # 在这里添加针对Windows的特定配置
     set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/bin/Debug-Win )
     Set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/bin/Release-Win )
     set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_CURRENT_SOURCE_DIR}/bin/minSizeRe-Win )
+    set ( Boost_DIR "./3rdparty/boost-regex/lib-x64-win/cmake/Boost-1.82.0" )
+    # set ( Boost_USE_STATIC_RUNTIME ON )
 endif ()
 
 set ( CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/install )
 
-# set ( Boost_DEBUG 1 )
 
-# add_compile_definitions ( _DEBUG_ )
 find_package ( QT NAMES Qt6 REQUIRED COMPONENTS Widgets )
 find_package ( Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets )
-
-# find_package ( Boost 1.82.0 REQUIRED COMPONENTS regex )
-set ( CMAKE_PREFIX_PATH "./3rdparty/boost-regex-x64-win/lib/cmake/boost-1.82.0" )
 find_package ( Boost CONFIG REQUIRED COMPONENTS regex )
 
 include_directories (
     ./src/
     ./src/page/practiceWnd
     ./src/page/test
-    ./3rdparty/boost-regex-x64-win/include
+    ./3rdparty/boost-regex/include
 )
 
 # 遍历所有.cpp、.h、.ui文件
@@ -53,10 +53,6 @@ foreach ( cpp_h_ui_file_path ${cpp_h_ui_path} )
     string ( REPLACE "${CMAKE_CURRENT_SOURCE_DIR}/" "" cpp_h_ui_filename ${cpp_h_ui_file_path} )
     list ( APPEND SOURCES_CPP_H_UI ${cpp_h_ui_filename} )
 endforeach ( cpp_h_ui_file_path )
-
-foreach ( file ${SOURCES_CPP_H_UI} )
-    message ( "!!!" ${file} )
-endforeach ( file )
 
 qt_add_executable ( RegexLearning
     WIN32

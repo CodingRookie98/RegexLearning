@@ -2,6 +2,7 @@
 #include "tool/helperFunc.h"
 #include "ui_RegexPracWindow.h"
 #include "./MatchTextDisplay.h"
+#include <minwindef.h>
 #include <qbrush.h>
 #include <qcolor.h>
 #include <qicon.h>
@@ -9,6 +10,7 @@
 #include <qregularexpression.h>
 #include <qtmetamacros.h>
 #include <qurl.h>
+#include <type_traits>
 
 QIcon openEye;
 QIcon closeEye;
@@ -75,7 +77,9 @@ void RegexPracWindow::ListWidgetEvent() {
             }
         }
 
-        ui->lineEdit_regexInput->clear();
+        if (ui->lineEdit_regexInput->text().isEmpty() == false && item != nullptr) {
+            ui->lineEdit_regexInput->clear();
+        }
 
         // ! 请勿随便改动此处代码逻辑
         // 如果匹配的答案文本为空
