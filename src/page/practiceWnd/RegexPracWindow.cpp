@@ -76,8 +76,8 @@ void RegexPracWindow::ListWidgetEvent() {
             }
         }
 
-        if (ui->lineEdit_regexInput->text().isEmpty() == false && item != nullptr) {
-            ui->lineEdit_regexInput->clear();
+        if (item != nullptr) {                // 解决窗口关闭时的段错误
+            ui->lineEdit_regexInput->clear(); // 当item改变时清楚输入框内容
         }
 
         // ! 请勿随便改动此处代码逻辑
