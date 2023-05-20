@@ -10,8 +10,8 @@
 #include <qtmetamacros.h>
 #include <qurl.h>
 
-const QIcon openEye(":/svg/svg/eye_open.svg");
-const QIcon closeEye(":/svg/svg/eye_close.svg");
+QIcon openEye;
+QIcon closeEye;
 const QString mdTitleHead("# ");
 const QString lineBreak("\n");
 
@@ -31,6 +31,9 @@ RegexPracWindow::~RegexPracWindow() {
 }
 
 void RegexPracWindow::init() {
+    openEye.addFile(":/svg/svg/eye_open.svg");
+    closeEye.addFile(":/svg/svg/eye_close.svg");
+
     TopicInfo *cur = dynamic_cast<TopicInfo *>(ui->listWidget->currentItem());
     ui->matchText->setMatchText(cur->get_text());
     ui->description->setMarkdown(mdTitleHead + cur->get_title() + lineBreak + cur->get_description());
@@ -71,6 +74,8 @@ void RegexPracWindow::ListWidgetEvent() {
                 ui->description->setAlignment(Qt::AlignCenter);
             }
         }
+
+        ui->lineEdit_regexInput->clear();
 
         // ! 请勿随便改动此处代码逻辑
         // 如果匹配的答案文本为空
@@ -201,6 +206,7 @@ void RegexPracWindow::ButtonEvent() {
         if (ui->label_Answer->isVisible()) {
             emit ui->toolButton_openAnswer->clicked();
         }
+        ui->lineEdit_regexInput->clear();
     });
 
     // 当点击下一个按钮时
@@ -215,5 +221,6 @@ void RegexPracWindow::ButtonEvent() {
         if (ui->label_Answer->isVisible()) {
             emit ui->toolButton_openAnswer->clicked();
         }
+        ui->lineEdit_regexInput->clear();
     });
 }

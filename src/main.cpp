@@ -4,7 +4,7 @@
 #include <qfilesystemwatcher.h>
 #include <qobject.h>
 
-#define _DEBUG_
+// #define _DEBUG_
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
@@ -34,7 +34,7 @@ int main(int argc, char *argv[]) {
 #else
     QFile qssFile(":/qss/style.qss");           // 1.
     if (qssFile.open(QFile::ReadOnly)) {        // 2.
-        this->setStyleSheet(qssFile.readAll()); // 3.
+        w.setStyleSheet(qssFile.readAll());     // 3.
     }
     qssFile.close();                            // 4.
 #endif

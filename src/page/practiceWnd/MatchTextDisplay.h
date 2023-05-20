@@ -4,7 +4,6 @@
 
 #include <QTextBrowser>
 
-
 class MatchTextDisplay : public QTextBrowser {
     Q_OBJECT
 public:

@@ -1,5 +1,5 @@
 QMainWindow {
-    /* background-image: url(":/img/img/background.jpg"); */
+    /* background-image: url(":/img/img/background_1.jpg"); */
     /* border-image: url(":/img/img/background.jpg") 10 stretch; */
         background: #E0F2F7;
         border-radius: 8px;
@@ -134,13 +134,11 @@ QLineEdit {
 }
 
 QTextEdit {
+    background: #b9e8f6;
     border-radius: 6px;
 }
 
 QListWidget {
     background: #b9e8f6;
-}
-
-QListWidget {
     border-radius: 6px;
 }

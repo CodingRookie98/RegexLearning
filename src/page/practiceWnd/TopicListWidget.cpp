@@ -1,9 +1,7 @@
 
-#include <QJsonValue>
-#include <QJsonArray>
-#include <qregularexpression.h>
 #include "TopicListWidget.h"
 #include "tool/helperFunc.h"
+#include <qjsonarray.h>
 
 TopicListWidget::TopicListWidget(QWidget *parent) :
     QListWidget(parent) {

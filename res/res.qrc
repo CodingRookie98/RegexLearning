@@ -2,6 +2,7 @@
     <qresource prefix="/img">
         <file>img/RegexIcon.png</file>
         <file>img/background.jpg</file>
+        <file>img/background_1.jpg</file>
     </qresource>
     <qresource prefix="/svg">
         <file>svg/RegexIcon.svg</file>

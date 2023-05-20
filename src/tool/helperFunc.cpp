@@ -1,12 +1,16 @@
 #include "helperFunc.h"
 #include "tool/helperFunc.h"
 #include <qregularexpression.h>
-#include <regex>
 #include <string>
 #include <vector>
+#include <boost/regex.hpp>
 
-QString HtmlHeadRed   = "<font color=\"red\">";
-QString HtmlHeadGreen = "<font color=\"green\">";
+// QString HtmlHeadRed   = "<font color=\"red\">";
+// QString HtmlHeadGreen = "<font color=\"green\">";
+// QString HtmlTail = "</font>";
+
+QString HtmlHeadRed   = "<font style=\"background-color:red;\">";
+QString HtmlHeadGreen = "<font style=\"background-color:green;\">";
 QString HtmlTail      = "</font>";
 
 QJsonObject readJson(const QString &fileName) {
@@ -35,15 +39,20 @@ void regexReplaceAndSetColor(std::vector<QString> &vec,
                              const QRegularExpression &pattern,
                              const bool color) {
     std::vector<std::string> stdStr = convertQstringToStdstr(vec);
-    std::regex stdReg(pattern.pattern().toStdString());
-    for (auto &str : stdStr) {
-        if (color) {
-            str = std::regex_replace(str, stdReg,
-                                     HtmlHeadGreen.toStdString() + "$&" + HtmlTail.toStdString());
-        } else {
-            str = std::regex_replace(str, stdReg,
-                                     HtmlHeadRed.toStdString() + "$&" + HtmlTail.toStdString());
+    qDebug() << pattern.pattern().toStdString();
+    try {
+        boost::regex Reg(pattern.pattern().toStdString());
+        for (auto &str : stdStr) {
+            if (color) {
+                str = boost::regex_replace(str, Reg,
+                                           HtmlHeadGreen.toStdString() + "$&" + HtmlTail.toStdString());
+            } else {
+                str = boost::regex_replace(str, Reg,
+                                           HtmlHeadRed.toStdString() + "$&" + HtmlTail.toStdString());
+            }
         }
+    } catch (boost::regex_error &e) {
+        return;
     }
     vec.clear();
     vec = convertStdstrToQstring(stdStr);

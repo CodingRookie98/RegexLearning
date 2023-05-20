@@ -9,21 +9,37 @@ set ( CMAKE_AUTORCC ON )
 set ( CMAKE_CXX_STANDARD 17 )
 set ( CMAKE_CXX_STANDARD_REQUIRED ON )
 
-set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/bin/Debug )
-Set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/bin/Release )
-set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_CURRENT_SOURCE_DIR}/bin/minSizeRel )
+if ( ${CMAKE_SYSTEM_NAME} MATCHES "Linux" )
+    # Linux系统
+    # 在这里添加针对Linux的特定配置
+    set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/bin/Debug-Linux )
+    Set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/bin/Release-Linux )
+    set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_CURRENT_SOURCE_DIR}/bin/minSizeRe-Linux )
+elseif ( ${CMAKE_SYSTEM_NAME} MATCHES "Windows" )
+    # Windows系统
+    # 在这里添加针对Windows的特定配置
+    set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/bin/Debug-Win )
+    Set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/bin/Release-Win )
+    set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_CURRENT_SOURCE_DIR}/bin/minSizeRe-Win )
+endif ()
 
-set ( CMAKE_INSTALL_PREFIX ./ )
+set ( CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/install )
+
+# set ( Boost_DEBUG 1 )
 
 # add_compile_definitions ( _DEBUG_ )
-
 find_package ( QT NAMES Qt6 REQUIRED COMPONENTS Widgets )
 find_package ( Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets )
+
+# find_package ( Boost 1.82.0 REQUIRED COMPONENTS regex )
+set ( CMAKE_PREFIX_PATH "./3rdparty/boost-regex-x64-win/lib/cmake/boost-1.82.0" )
+find_package ( Boost CONFIG REQUIRED COMPONENTS regex )
 
 include_directories (
     ./src/
     ./src/page/practiceWnd
     ./src/page/test
+    ./3rdparty/boost-regex-x64-win/include
 )
 
 # 遍历所有.cpp、.h、.ui文件
@@ -51,7 +67,9 @@ qt_add_executable ( RegexLearning
 )
 
 target_link_libraries ( RegexLearning
-    PRIVATE Qt${QT_VERSION_MAJOR}::Widgets
+    PRIVATE
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Boost::regex
 )
 
 set_target_properties ( RegexLearning PROPERTIES
@@ -67,6 +85,13 @@ install ( TARGETS RegexLearning
     BUNDLE DESTINATION bin/Debug
     LIBRARY DESTINATION lib/Debug
     RUNTIME DESTINATION bin/Debug
+)
+
+install ( TARGETS RegexLearning
+    CONFIGURATIONS Release
+    BUNDLE DESTINATION bin/Release
+    LIBRARY DESTINATION lib/Release
+    RUNTIME DESTINATION bin/Release
 )
 
 if ( QT_VERSION_MAJOR EQUAL 6 )
