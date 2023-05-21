@@ -17,6 +17,7 @@ QJsonObject readJson(const QString &fileName);
 // * 正则替换
 // * 利用HTML设置匹配文字颜色， true 为绿色，red 为红色
 void regexReplaceAndSetColor(std::vector<QString> &vec, const QRegularExpression &pattern, const bool color);
+void regexReplaceAndSetColor(QString &qstr, const QRegularExpression &pattern, const bool color);
 
 // * 将容器内的QString转为std::string
 std::vector<std::string> convertQstringToStdstr(const std::vector<QString> &input);

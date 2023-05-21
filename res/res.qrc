@@ -17,9 +17,7 @@
         <file>svg/file-open.svg</file>
         <file>svg/paste.svg</file>
         <file>svg/correct.svg</file>
-    </qresource>
-    <qresource prefix="/data">
-        <file>data/homePage.md</file>
-        <file>data/TopicInfo.json</file>
+        <file>svg/cheatSheet.svg</file>
+        <file>svg/about.svg</file>
     </qresource>
 </RCC>

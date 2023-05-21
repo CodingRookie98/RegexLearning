@@ -2,6 +2,9 @@
 #include "TopicListWidget.h"
 #include "tool/helperFunc.h"
 #include <qjsonarray.h>
+#include "practiceWndVariant.h"
+
+const QString jsonFile_TopicInfo = ":/data/TopicInfo.json";
 
 TopicListWidget::TopicListWidget(QWidget *parent) :
     QListWidget(parent) {
@@ -42,7 +45,7 @@ void TopicListWidget::init() {
 }
 
 void TopicListWidget::init_TopicInfos() {
-    QJsonObject jsonObject = readJson(":/data/data/TopicInfo.json");
+    QJsonObject jsonObject = readJson(jsonFile_TopicInfo);
     QJsonValue jsValue     = jsonObject.value("topicInfoArray");
 
     if (jsValue.type() == QJsonValue::Array) {

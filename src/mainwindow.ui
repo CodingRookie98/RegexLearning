@@ -78,6 +78,95 @@
          <property name="horizontalSpacing">
           <number>0</number>
          </property>
+         <item row="3" column="0">
+          <widget class="QToolButton" name="btnCheatSheet">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="mouseTracking">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>备忘单</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../res/res.qrc">
+             <normaloff>:/svg/svg/cheatSheet.svg</normaloff>:/svg/svg/cheatSheet.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="4" column="0">
+          <spacer name="verticalSpacer">
+           <property name="orientation">
+            <enum>Qt::Vertical</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>20</width>
+             <height>40</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item row="0" column="0">
+          <widget class="QToolButton" name="btnHome">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="autoFillBackground">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>主页</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../res/res.qrc">
+             <normaloff>:/svg/svg/homePage.svg</normaloff>:/svg/svg/homePage.svg</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>40</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
          <item row="1" column="0">
           <widget class="QToolButton" name="btnPrac">
            <property name="sizePolicy">
@@ -128,44 +217,6 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="0">
-          <widget class="QToolButton" name="btnHome">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="autoFillBackground">
-            <bool>false</bool>
-           </property>
-           <property name="text">
-            <string>主页</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../res/res.qrc">
-             <normaloff>:/svg/svg/homePage.svg</normaloff>:/svg/svg/homePage.svg</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>40</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="checkable">
-            <bool>true</bool>
-           </property>
-           <property name="autoExclusive">
-            <bool>true</bool>
-           </property>
-           <property name="toolButtonStyle">
-            <enum>Qt::ToolButtonTextUnderIcon</enum>
-           </property>
-           <property name="autoRaise">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
          <item row="2" column="0">
           <widget class="QToolButton" name="btnRegexTest">
            <property name="mouseTracking">
@@ -198,18 +249,43 @@
            </property>
           </widget>
          </item>
-         <item row="3" column="0">
-          <spacer name="verticalSpacer">
-           <property name="orientation">
-            <enum>Qt::Vertical</enum>
+         <item row="5" column="0">
+          <widget class="QToolButton" name="btnRegexTest_2">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
            </property>
-           <property name="sizeHint" stdset="0">
+           <property name="mouseTracking">
+            <bool>false</bool>
+           </property>
+           <property name="text">
+            <string>关于</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../res/res.qrc">
+             <normaloff>:/svg/svg/about.svg</normaloff>:/svg/svg/about.svg</iconset>
+           </property>
+           <property name="iconSize">
             <size>
-             <width>20</width>
+             <width>40</width>
              <height>40</height>
             </size>
            </property>
-          </spacer>
+           <property name="checkable">
+            <bool>true</bool>
+           </property>
+           <property name="autoExclusive">
+            <bool>true</bool>
+           </property>
+           <property name="toolButtonStyle">
+            <enum>Qt::ToolButtonTextUnderIcon</enum>
+           </property>
+           <property name="autoRaise">
+            <bool>true</bool>
+           </property>
+          </widget>
          </item>
         </layout>
        </item>

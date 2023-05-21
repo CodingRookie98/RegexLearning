@@ -2,6 +2,7 @@
 #define HOMEWINDOW_H
 
 #include <QWidget>
+#include <qtmetamacros.h>
 
 namespace Ui {
 class HomeWindow;
@@ -17,6 +18,8 @@ public:
 
 private:
     Ui::HomeWindow *ui;
+signals:
+    void sendPageIndex(const int index);
 };
 
 #endif // HOMEWINDOW_H

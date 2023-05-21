@@ -39,7 +39,7 @@ void regexReplaceAndSetColor(std::vector<QString> &vec,
                              const QRegularExpression &pattern,
                              const bool color) {
     std::vector<std::string> stdStr = convertQstringToStdstr(vec);
-    qDebug() << pattern.pattern().toStdString();
+    //    qDebug() << pattern.pattern().toStdString();
     try {
         boost::regex Reg(pattern.pattern().toStdString());
         for (auto &str : stdStr) {
@@ -56,6 +56,24 @@ void regexReplaceAndSetColor(std::vector<QString> &vec,
     }
     vec.clear();
     vec = convertStdstrToQstring(stdStr);
+}
+
+void regexReplaceAndSetColor(QString &qstr, const QRegularExpression &pattern, const bool color) {
+    try {
+        boost::regex Reg(pattern.pattern().toStdString());
+        std::string str = qstr.toStdString();
+        if (color) {
+            str = boost::regex_replace(str, Reg,
+                                       HtmlHeadGreen.toStdString() + "$&" + HtmlTail.toStdString());
+        } else {
+            str = boost::regex_replace(str, Reg,
+                                       HtmlHeadRed.toStdString() + "$&" + HtmlTail.toStdString());
+        }
+        qstr.clear();
+        qstr = qstr.append(QString(str.c_str()));
+    } catch (boost::regex_error &e) {
+        return;
+    }
 }
 
 std::vector<std::string>

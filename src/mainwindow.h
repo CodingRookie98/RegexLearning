@@ -2,9 +2,10 @@
 #ifndef MAINWINDOW_H
 #define MAINWINDOW_H
 
-#include "RegexPracWindow.h"
 #include "page/homeWnd/HomeWindow.h"
+#include "page/practiceWnd/RegexPracWindow.h"
 #include "page/regexTestWnd/RegexTestWindow.h"
+#include "page/cheatSheetWnd/CheatSheetWindow.h"
 #include <QMainWindow>
 #include <QButtonGroup>
 
@@ -28,6 +29,7 @@ private:
     HomeWindow homeWnd;
     RegexPracWindow regexPracWnd;
     RegexTestWindow regexTestWnd;
+    CheatSheetWindow cheatSheetWnd;
 
     void init();
 

@@ -1,0 +1,128 @@
+{
+    "anchors": [
+        {
+            "title": "字符串或行的开头",
+            "description": "匹配字符串或行的开头。",
+            "text": "an answer or a question",
+            "pattern": "^\\w+"
+        },
+        {
+            "title": "字符串或行的末尾",
+            "description": "匹配字符串或行的末尾。"
+        },
+        {
+            "title": "单词边界",
+            "description": "匹配单词的开头或末尾。"
+        },
+        {
+            "title": "非单词边界",
+            "description": "匹配不在单词开头或末尾的位置。"
+        }
+    ],
+    "characterClasses": [
+        {
+            "title": "字符集",
+            "description": "匹配集合中的任意字符。"
+        },
+        {
+            "title": "否定字符集",
+            "description": "匹配不在集合中的任意字符。"
+        },
+        {
+            "title": "范围",
+            "description": "匹配两个字符之间的任意字符，包括它们本身。"
+        },
+        {
+            "title": "点",
+            "description": "匹配除换行符之外的任意字符。"
+        },
+        {
+            "title": "单词",
+            "description": "匹配字母、数字或下划线。"
+        },
+        {
+            "title": "非单词",
+            "description": "匹配除字母、数字和下划线之外的任意字符。"
+        },
+        {
+            "title": "数字",
+            "description": "匹配所有数字。"
+        },
+        {
+            "title": "非数字",
+            "description": "匹配除数字外的任意字符。"
+        },
+        {
+            "title": "空白符",
+            "description": "匹配所有空白字符。"
+        },
+        {
+            "title": "非空白符",
+            "description": "匹配除空白字符以外的任意字符。"
+        }
+    ],
+    "flags": [
+        {
+            "title": "忽略大小写",
+            "description": "使表达式忽略大小写。"
+        },
+        {
+            "title": "全局",
+            "description": "确保表达式不会在检索到第一个匹配项时停止。"
+        },
+        {
+            "title": "多行",
+            "description": "如果不启用，`^` 和 `$` 只匹配整个字符串的开始和结束，而不会单独匹配每一行。"
+        }
+    ],
+    "groupAndReferences": [
+        {
+            "title": "组",
+            "description": "使表达式分组。"
+        },
+        {
+            "title": "引用",
+            "description": "引用表达式的分组。"
+        },
+        {
+            "title": "非捕获组",
+            "description": "创建无法引用的分组。"
+        }
+    ],
+    "lookarounds": [
+        {
+            "title": "正向先行断言"
+        },
+        {
+            "title": "负向先行断言"
+        },
+        {
+            "title": "正向后行断言"
+        },
+        {
+            "title": "负向后行断言"
+        }
+    ],
+    "quantifiersAndAlternation": [
+        {
+            "title": "加号",
+            "description": "表达式匹配一个或多个。"
+        },
+        {
+            "title": "星号",
+            "description": "表达式匹配零个或多个。"
+        },
+        {
+            "title": "重复",
+            "description": "表达式匹配指定范围的位数。"
+        },
+        {
+            "title": "可选",
+            "description": "使表达式可选。"
+        },
+        {
+            "title": "分支",
+            "description": "类似于“或”。用于匹配多种符合条件的表达式之一。"
+        }
+    ]
+}

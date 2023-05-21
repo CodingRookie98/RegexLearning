@@ -50,6 +50,7 @@ QToolButton#btnRegexTest:checked {
     background-color: #39c9da;
 }
 
+QToolButton#btnStartLearn,
 QToolButton#toolButton_openAnswer,
 QToolButton#btnPasteRegex,
 QToolButton#btnPasteText,
@@ -67,6 +68,7 @@ QToolButton#btnClearText {
     padding-bottom: 3px;
 }
 
+QToolButton#btnStartLearn:hover,
 QToolButton#toolButton_openAnswer:hover,
 QToolButton#btnPasteRegex:hover,
 QToolButton#btnPasteText:hover,
@@ -75,6 +77,7 @@ QToolButton#btnClearText:hover {
     background: #39c9da;
 }
 
+QToolButton#btnStartLearn:pressed,
 QToolButton#toolButton_openAnswer:pressed,
 QToolButton#toolButton_openAnswer:pressed,
 QToolButton#btnPasteRegex:pressed,
@@ -141,4 +144,17 @@ QTextEdit {
 QListWidget {
     background: #b9e8f6;
     border-radius: 6px;
+}
+QWidget#HomeWindow {
+    /* background: transparent; */
+    background: #E0F2F7;
+}
+
+QScrollArea {
+    /* background: transparent; */
+    background: #E0F2F7;
+}
+
+QWidget#scrollAreaWidgetContents {
+    background: #E0F2F7;
 }

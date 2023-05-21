@@ -38,7 +38,7 @@ find_package ( Boost CONFIG REQUIRED COMPONENTS regex )
 include_directories (
     ./src/
     ./src/page/practiceWnd
-    ./src/page/test
+    ./src/page/cheatSheetWnd
     ./3rdparty/boost-regex/include
 )
 
@@ -60,6 +60,8 @@ qt_add_executable ( RegexLearning
     ${SOURCES_CPP_H_UI}
     ./res/res.qrc
     ./res/StyleSheet.qrc
+    ./res/homeWnd.qrc
+    ./res/json.qrc
 )
 
 target_link_libraries ( RegexLearning

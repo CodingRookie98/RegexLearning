@@ -1,0 +1,13 @@
+<RCC>
+    <qresource prefix="/png">
+        <file>homeWnd/Done.png</file>
+        <file>homeWnd/Learn.png</file>
+        <file>homeWnd/Cheatsheet.png</file>
+        <file>homeWnd/Open Source.png</file>
+        <file>homeWnd/Playground.png</file>
+        <file>homeWnd/Practise.png</file>
+    </qresource>
+    <qresource prefix="/svg">
+        <file>homeWnd/github.svg</file>
+    </qresource>
+</RCC>
