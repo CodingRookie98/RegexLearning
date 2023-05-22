@@ -1,6 +1,0 @@
-<RCC>
-    <qresource prefix="/">
-        <file>data/cheatSheet.json</file>
-        <file>data/TopicInfo.json</file>
-    </qresource>
-</RCC>
