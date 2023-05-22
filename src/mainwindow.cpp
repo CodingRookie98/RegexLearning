@@ -2,6 +2,9 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "qbuttongroup.h"
+#include <qabstractbutton.h>
+#include <qobject.h>
+#include <qtoolbutton.h>
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -30,16 +33,20 @@ void MainWindow::init() {
     this->setMinimumWidth(1000);
     ui->stackedWidget->setCurrentIndex(0);
 
-    // QFile qssFile("./res/FluentUI/QMainWindow.qss");
-    // if (qssFile.open(QFile::ReadOnly)) {
-    //     this->setStyleSheet(qssFile.readAll());
-    // }
     leftSideBarEvent();
 }
 
 // 导航栏中点击按钮切换窗口
 void MainWindow::leftSideBarEvent() {
+    // qDebug() << btnGroup.exclusive(); // true
+
     connect(&btnGroup, &QButtonGroup::idClicked,
             ui->stackedWidget, &QStackedWidget::setCurrentIndex);
-    connect(&homeWnd, &HomeWindow::sendPageIndex, ui->stackedWidget, &QStackedWidget::setCurrentIndex);
+
+    connect(&btnGroup, &QButtonGroup::idClicked, &btnGroup, [&](int id) {
+        // qDebug() << "idClicked is " << id;
+        btnGroup.button(id)->setChecked(true);
+    });
+
+    connect(&homeWnd, &HomeWindow::sendLeftBarButtonIndex, &btnGroup, &QButtonGroup::idClicked);
 }

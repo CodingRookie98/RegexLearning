@@ -13,7 +13,9 @@ QStackedWidget {
 
 QToolButton#btnHome,
 QToolButton#btnPrac,
-QToolButton#btnRegexTest {
+QToolButton#btnRegexTest,
+QToolButton#btnCheatSheet,
+QToolButton#btnAbout {
     background: transparent;
     /* 上边框宽度3像素、突出显示、颜色为透明 */
     border-top: 3px outset transparent;
@@ -27,20 +29,26 @@ QToolButton#btnRegexTest {
 
 QToolButton#btnHome:hover,
 QToolButton#btnPrac:hover,
-QToolButton#btnRegexTest:hover {
+QToolButton#btnRegexTest:hover,
+QToolButton#btnCheatSheet:hover,
+QToolButton#btnAbout:hover {
     background: #5acfdc;
 }
 
 QToolButton#btnHome:pressed,
 QToolButton#btnPrac:pressed,
-QToolButton#btnRegexTest:pressed {
+QToolButton#btnRegexTest:pressed,
+QToolButton#btnCheatSheet:pressed,
+QToolButton#btnAbout:pressed {
     /* border-left: 3px outset rgb(188, 21, 69); */
     background-color: #39c9da;
 }
 
 QToolButton#btnHome:checked,
 QToolButton#btnPrac:checked,
-QToolButton#btnRegexTest:checked {
+QToolButton#btnRegexTest:checked,
+QToolButton#btnCheatSheet:checked,
+QToolButton#btnAbout:checked {
     border-left: 1px outset rgb(42, 16, 170);
     background-color: #39c9da;
 }

@@ -1,6 +1,7 @@
 #ifndef HOMEWINDOW_H
 #define HOMEWINDOW_H
 
+#include "qbuttongroup.h"
 #include <QWidget>
 #include <qtmetamacros.h>
 
@@ -18,8 +19,12 @@ public:
 
 private:
     Ui::HomeWindow *ui;
+    QButtonGroup btnGroup;
+
+    void init();
+    void buttonEvent();
 signals:
-    void sendPageIndex(const int index);
+    void sendLeftBarButtonIndex(int index);
 };
 
 #endif // HOMEWINDOW_H
