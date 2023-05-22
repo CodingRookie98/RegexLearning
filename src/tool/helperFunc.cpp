@@ -1,4 +1,5 @@
 #include "helperFunc.h"
+#include "boost/regex/v5/match_flags.hpp"
 #include "boost/regex/v5/regex_fwd.hpp"
 #include "tool/helperFunc.h"
 #include <qregularexpression.h>
@@ -44,12 +45,23 @@ void regexReplaceAndSetColor(std::vector<QString> &vec,
     try {
         boost::regex Reg(pattern.pattern().toStdString());
         for (auto &str : stdStr) {
+            std::string stdPattern = pattern.pattern().toStdString();
             if (color) {
-                str = boost::regex_replace(str, Reg,
-                                           HtmlHeadGreen.toStdString() + "$&" + HtmlTail.toStdString());
+                if (stdPattern.find("?") != std::string::npos && stdPattern.find("\\?") == std::string::npos) {
+                    str = boost::regex_replace(str, Reg,
+                                               HtmlHeadGreen.toStdString() + "$&" + HtmlTail.toStdString(), boost::regex_constants::format_first_only);
+                } else {
+                    str = boost::regex_replace(str, Reg,
+                                               HtmlHeadGreen.toStdString() + "$&" + HtmlTail.toStdString());
+                }
             } else {
-                str = boost::regex_replace(str, Reg,
-                                           HtmlHeadRed.toStdString() + "$&" + HtmlTail.toStdString());
+                if (stdPattern.find("?") != std::string::npos && stdPattern.find("\\?") == std::string::npos) {
+                    str = boost::regex_replace(str, Reg,
+                                               HtmlHeadRed.toStdString() + "$&" + HtmlTail.toStdString(), boost::regex_constants::format_first_only);
+                } else {
+                    str = boost::regex_replace(str, Reg,
+                                               HtmlHeadRed.toStdString() + "$&" + HtmlTail.toStdString());
+                }
             }
         }
     } catch (boost::regex_error &e) {
