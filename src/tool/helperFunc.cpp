@@ -11,8 +11,8 @@
 // QString HtmlHeadGreen = "<font color=\"green\">";
 // QString HtmlTail = "</font>";
 
-QString HtmlHeadRed   = "<font style=\"background-color:red;\">";
-QString HtmlHeadGreen = "<font style=\"background-color:green;\">";
+QString HtmlHeadRed   = "<font style=\"background-color:#D50506;\">";
+QString HtmlHeadGreen = "<font style=\"background-color:#9BF80C;\">";
 QString HtmlTail      = "</font>";
 
 QJsonObject readJson(const QString &fileName) {
