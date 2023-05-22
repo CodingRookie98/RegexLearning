@@ -19,11 +19,13 @@ void MainWindow::init() {
     ui->stackedWidget->addWidget(&regexPracWnd); // index = 1;
     ui->stackedWidget->addWidget(&regexTestWnd); // index = 2;
     ui->stackedWidget->addWidget(&cheatSheetWnd); // index = 3
+    ui->stackedWidget->addWidget(&aboutWnd);      // index = 4
 
     this->btnGroup.addButton(ui->btnHome, 0);
     this->btnGroup.addButton(ui->btnPrac, 1);
     this->btnGroup.addButton(ui->btnRegexTest, 2);
     this->btnGroup.addButton(ui->btnCheatSheet, 3);
+    this->btnGroup.addButton(ui->btnAbout, 4);
 
     this->setMinimumWidth(1000);
     ui->stackedWidget->setCurrentIndex(0);

@@ -59,13 +59,13 @@
         <number>0</number>
        </property>
        <property name="topMargin">
-        <number>0</number>
+        <number>10</number>
        </property>
        <property name="rightMargin">
         <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>5</number>
+        <number>20</number>
        </property>
        <property name="verticalSpacing">
         <number>0</number>
@@ -250,7 +250,7 @@
           </widget>
          </item>
          <item row="5" column="0">
-          <widget class="QToolButton" name="btnRegexTest_2">
+          <widget class="QToolButton" name="btnAbout">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>

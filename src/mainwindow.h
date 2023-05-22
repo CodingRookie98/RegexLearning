@@ -6,6 +6,7 @@
 #include "page/practiceWnd/RegexPracWindow.h"
 #include "page/regexTestWnd/RegexTestWindow.h"
 #include "page/cheatSheetWnd/CheatSheetWindow.h"
+#include "page/aboutWnd/AboutWindow.h"
 #include <QMainWindow>
 #include <QButtonGroup>
 
@@ -30,6 +31,7 @@ private:
     RegexPracWindow regexPracWnd;
     RegexTestWindow regexTestWnd;
     CheatSheetWindow cheatSheetWnd;
+    AboutWindow aboutWnd;
 
     void init();
 
