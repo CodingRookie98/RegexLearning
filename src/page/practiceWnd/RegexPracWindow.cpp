@@ -38,7 +38,6 @@ void RegexPracWindow::init() {
     TopicInfo *cur = dynamic_cast<TopicInfo *>(ui->listWidget->currentItem());
     ui->matchText->setMatchText(cur->get_text());
     ui->description->setMarkdown(mdTitleHead + cur->get_title() + lineBreak + cur->get_description());
-
     ui->description->setAlignment(Qt::AlignCenter);
 
     // * 设置答案文本框默认为隐藏

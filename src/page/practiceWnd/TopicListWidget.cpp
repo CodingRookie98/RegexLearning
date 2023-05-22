@@ -2,7 +2,6 @@
 #include "TopicListWidget.h"
 #include "tool/helperFunc.h"
 #include <qjsonarray.h>
-#include "practiceWndVariant.h"
 
 const QString jsonFile_TopicInfo = ":/data/TopicInfo.json";
 
