@@ -1,4 +1,5 @@
 #include "mainwindow.h"
+#include "qstylefactory.h"
 
 #include <QApplication>
 #include <qfilesystemwatcher.h>
@@ -32,12 +33,13 @@ int main(int argc, char *argv[]) {
         }
     });
 #else
-    QFile qssFile(":/qss/style.qss");           // 1.
-    if (qssFile.open(QFile::ReadOnly)) {        // 2.
-        w.setStyleSheet(qssFile.readAll());     // 3.
-    }
-    qssFile.close();                            // 4.
+    // QFile qssFile(":/qss/style.qss");           // 1.
+    // if (qssFile.open(QFile::ReadOnly)) {        // 2.
+    //     w.setStyleSheet(qssFile.readAll());     // 3.
+    // }
+    // qssFile.close();                            // 4.
 #endif
+    a.setStyle(QStyleFactory::create("Fusion"));
 
     return a.exec();
 }
