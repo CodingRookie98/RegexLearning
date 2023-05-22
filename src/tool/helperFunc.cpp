@@ -1,4 +1,5 @@
 #include "helperFunc.h"
+#include "boost/regex/v5/regex_fwd.hpp"
 #include "tool/helperFunc.h"
 #include <qregularexpression.h>
 #include <string>
@@ -60,8 +61,17 @@ void regexReplaceAndSetColor(std::vector<QString> &vec,
 
 void regexReplaceAndSetColor(QString &qstr, const QRegularExpression &pattern, const bool color) {
     try {
-        boost::regex Reg(pattern.pattern().toStdString());
+        boost::regex Reg;
+        std::string stdReg = pattern.pattern().toStdString();
         std::string str = qstr.toStdString();
+        if (stdReg.find("/i") != std::string::npos) {
+            // qDebug() << QString(stdReg.c_str());
+            stdReg.erase(stdReg.find("/i"), 2);
+            // qDebug() << QString(stdReg.c_str());
+            Reg.assign(stdReg, boost::regex::icase);
+        } else {
+            Reg.assign(stdReg);
+        }
         if (color) {
             str = boost::regex_replace(str, Reg,
                                        HtmlHeadGreen.toStdString() + "$&" + HtmlTail.toStdString());
@@ -69,8 +79,10 @@ void regexReplaceAndSetColor(QString &qstr, const QRegularExpression &pattern, c
             str = boost::regex_replace(str, Reg,
                                        HtmlHeadRed.toStdString() + "$&" + HtmlTail.toStdString());
         }
+
         qstr.clear();
         qstr = qstr.append(QString(str.c_str()));
+        qstr.replace("\\n", "<br>");
     } catch (boost::regex_error &e) {
         return;
     }

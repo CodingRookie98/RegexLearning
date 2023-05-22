@@ -4,6 +4,7 @@
 #include "ui_ToolPage.h"
 #include <memory>
 #include <qregularexpression.h>
+#include <string>
 #include "tool/helperFunc.h"
 
 ToolPage::ToolPage(QWidget *parent) :
@@ -92,7 +93,13 @@ void ToolPage::set_pattern(const QString &_pattern) {
     if (pattern->isEmpty()) {
         ui->regex->setVisible(false);
     } else {
-        ui->regex->setText(*pattern);
+        if (pattern->toStdString().find("/i") != std::string::npos) {
+            std::string str = pattern->toStdString();
+            str.erase(str.find("/i"), 2);
+            ui->regex->setText(QString(str.c_str()));
+        } else {
+            ui->regex->setText(*pattern);
+        }
     }
 }
 
