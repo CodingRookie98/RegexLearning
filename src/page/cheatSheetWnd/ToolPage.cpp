@@ -64,25 +64,25 @@ void ToolPage::set_title(const QString &_title) {
 void ToolPage::set_description(const QString &_description) {
     description = std::make_shared<QString>(_description);
     if (description->isEmpty()) {
-        ui->description->setVisible(false);
+        ui->ToolPage_description->setVisible(false);
     } else {
-        ui->description->setText(*description);
+        ui->ToolPage_description->setText(*description);
     }
 }
 
 void ToolPage::set_text(const QString &_text) {
     text = std::make_shared<QString>(_text);
     if (text->isEmpty()) {
-        ui->text->setVisible(false);
+        ui->ToolPage_text->setVisible(false);
     } else {
         if (pattern->isEmpty() == false) {
             QRegularExpression qreg(*pattern);
             if (qreg.isValid()) {
                 QString temp = *text;
                 regexReplaceAndSetColor(temp, qreg, true);
-                ui->text->setText(temp);
+                ui->ToolPage_text->setText(temp);
             } else {
-                ui->regex->setText("表达式非法");
+                ui->ToolPage_regex->setText("表达式非法");
             }
         }
     }
@@ -91,14 +91,14 @@ void ToolPage::set_text(const QString &_text) {
 void ToolPage::set_pattern(const QString &_pattern) {
     pattern = std::make_shared<QString>(_pattern);
     if (pattern->isEmpty()) {
-        ui->regex->setVisible(false);
+        ui->ToolPage_regex->setVisible(false);
     } else {
         if (pattern->toStdString().find("/i") != std::string::npos) {
             std::string str = pattern->toStdString();
             str.erase(str.find("/i"), 2);
-            ui->regex->setText(QString(str.c_str()));
+            ui->ToolPage_regex->setText(QString(str.c_str()));
         } else {
-            ui->regex->setText(*pattern);
+            ui->ToolPage_regex->setText(*pattern);
         }
     }
 }

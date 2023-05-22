@@ -1,0 +1,48 @@
+QTextBrowser#textMatched {
+    background: #b9e8f6;
+    border-radius: 6px;
+}
+
+QTextEdit#textEdit {
+    background: #b9e8f6;
+    border-radius: 6px;
+}
+
+QLineEdit#RegexInput {
+    border-radius: 6px;
+}
+
+QLabel#ErrorDisplay {
+    background: red;
+    border-radius: 6px;
+}
+
+QToolButton#btnPasteRegex,
+QToolButton#btnPasteText,
+QToolButton#btnOpenFile,
+QToolButton#btnClearText {
+    background: transparent;
+    background-color: #5fe0ee;
+    border-radius: 8px;
+    border-style: outset;
+    border-width: 1px;
+    border-color: rgb(243, 246, 247);
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+QToolButton#btnPasteRegex:hover,
+QToolButton#btnPasteText:hover,
+QToolButton#btnOpenFile:hover,
+QToolButton#btnClearText:hover {
+    background: #39c9da;
+}
+
+QToolButton#btnPasteRegex:pressed,
+QToolButton#btnPasteText:pressed,
+QToolButton#btnOpenFile:pressed,
+QToolButton#btnClearText:pressed {
+    background: #076e7a;
+}

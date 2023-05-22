@@ -1,0 +1,46 @@
+QMainWindow {
+    background: #E0F2F7;
+    border-radius: 8px;
+}
+
+QWidget#widgetSideBar {
+    background: #b9e8f6;
+}
+
+QStackedWidget {
+    background: transparent;
+}
+
+QToolButton#btnHome,
+QToolButton#btnPrac,
+QToolButton#btnRegexTest {
+    background: transparent;
+    /* 上边框宽度3像素、突出显示、颜色为透明 */
+    border-top: 3px outset transparent;
+    border-bottom: 7px outset transparent;
+    border-right: 3px outset transparent;
+    border-left: 3px outset transparent;
+    /* 控件最小宽度 */
+    min-width: 40px;
+    min-height: 40px;
+}
+
+QToolButton#btnHome:hover,
+QToolButton#btnPrac:hover,
+QToolButton#btnRegexTest:hover {
+    background: #5acfdc;
+}
+
+QToolButton#btnHome:pressed,
+QToolButton#btnPrac:pressed,
+QToolButton#btnRegexTest:pressed {
+    /* border-left: 3px outset rgb(188, 21, 69); */
+    background-color: #39c9da;
+}
+
+QToolButton#btnHome:checked,
+QToolButton#btnPrac:checked,
+QToolButton#btnRegexTest:checked {
+    border-left: 1px outset rgb(42, 16, 170);
+    background-color: #39c9da;
+}

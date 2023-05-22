@@ -1,0 +1,55 @@
+QPushButton#pushButton_Next,
+QPushButton#pushButton_Previous,
+QToolButton#toolButton_openAnswer {
+    background: transparent;
+    background-color: #5fe0ee;
+    border-radius: 8px;
+    border-style: outset;
+    border-width: 1px;
+    border-color: rgb(243, 246, 247);
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
+
+QPushButton#pushButton_Next:hover,
+QPushButton#pushButton_Previous:hover,
+QToolButton#toolButton_openAnswer:hover {
+    background: #39c9da;
+}
+
+/* 定义按钮按下状态样式 */
+QPushButton#pushButton_Next:pressed,
+QPushButton#pushButton_Previous:pressed,
+QToolButton#toolButton_openAnswer:pressed {
+    background: #076e7a;
+}
+
+QLabel#regexError {
+    background: red;
+    border-radius: 6px;
+}
+
+QLabel#ErrorTopicInfo {
+    background: red;
+    border-radius: 6px;
+}
+
+QTextBrowser#description {
+    background: transparent;
+}
+
+QListWidget#listWidget {
+    background: #b9e8f6;
+    border-radius: 6px;
+}
+
+QLineEdit#lineEdit_regexInput {
+    border-radius: 6px;
+}
+
+MatchTextDisplay {
+    background: #b9e8f6;
+    border-radius: 6px;
+}

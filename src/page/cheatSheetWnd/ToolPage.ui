@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>990</width>
-    <height>832</height>
+    <width>734</width>
+    <height>596</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -43,6 +43,9 @@
      <property name="toolButtonStyle">
       <enum>Qt::ToolButtonTextBesideIcon</enum>
      </property>
+     <property name="autoRaise">
+      <bool>false</bool>
+     </property>
      <property name="arrowType">
       <enum>Qt::RightArrow</enum>
      </property>
@@ -70,7 +73,7 @@
        <number>10</number>
       </property>
       <item row="2" column="0">
-       <widget class="QGroupBox" name="groupBox_2">
+       <widget class="QGroupBox" name="groupBox_tp2">
         <property name="title">
          <string>正则表达式</string>
         </property>
@@ -91,7 +94,7 @@
           <number>0</number>
          </property>
          <item row="0" column="0">
-          <widget class="QLabel" name="regex">
+          <widget class="QLabel" name="ToolPage_regex">
            <property name="text">
             <string>regex</string>
            </property>
@@ -104,7 +107,7 @@
        </widget>
       </item>
       <item row="1" column="0">
-       <widget class="QGroupBox" name="groupBox">
+       <widget class="QGroupBox" name="groupBox_tp1">
         <property name="title">
          <string>文本</string>
         </property>
@@ -125,7 +128,7 @@
           <number>0</number>
          </property>
          <item row="0" column="0">
-          <widget class="QLabel" name="text">
+          <widget class="QLabel" name="ToolPage_text">
            <property name="text">
             <string>text</string>
            </property>
@@ -138,7 +141,7 @@
        </widget>
       </item>
       <item row="0" column="0">
-       <widget class="QLabel" name="description">
+       <widget class="QLabel" name="ToolPage_description">
         <property name="sizePolicy">
          <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
           <horstretch>0</horstretch>

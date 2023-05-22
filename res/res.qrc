@@ -1,7 +1,7 @@
 <RCC>
     <qresource prefix="/img">
         <file>img/RegexIcon.png</file>
-        <file alias="/json">img/alipay(300x300).jpg</file>
+        <file>img/alipay(300x300).jpg</file>
         <file>img/wechat(300x300).png</file>
     </qresource>
     <qresource prefix="/svg">

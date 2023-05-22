@@ -2,8 +2,51 @@
 #include <QApplication>
 #include <qfilesystemwatcher.h>
 #include <qobject.h>
+#include <QSettings>
+#include <qsettings.h>
 
-// #define _DEBUG_
+#define _DEBUG_
+
+#ifdef _DEBUG_
+const QString styleSheetPath   = "style.qss";
+const QString styleSheetConfig = "style.ini";
+QFileSystemWatcher fileWatcher;
+#else
+
+#endif
+
+void realRefreshTheme(QString &style) {
+    // qDebug() << "realReFreshTheme";
+    QMap<QString, QString> theme;
+    QSettings settings(styleSheetConfig, QSettings::IniFormat);
+    for (const QString &key : settings.allKeys()) {
+        // qDebug() << "key is " << key;
+        const QString &path = settings.value(key).toString();
+        QFile file(path);
+        fileWatcher.addPath(path);
+        if (file.open(QIODevice::ReadOnly)) {
+            // qDebug() << path << " is opened";
+            theme.insert(key, file.readAll());
+        } else {
+            theme.insert(key, "");
+        }
+    }
+    for (const QString &key : theme.keys()) {
+        style.replace(key, theme[key]);
+    }
+}
+
+void realRefreshStyle() {
+    QFile file(styleSheetPath);
+    if (file.open(QIODevice::ReadOnly)) {
+        // qDebug() << "style.qss opened";
+        QString style = file.readAll();
+        // qDebug() << style;
+        realRefreshTheme(style);
+        qobject_cast<QApplication *>(QApplication::instance())->setStyleSheet(style);
+        file.close();
+    }
+}
 
 int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
@@ -11,33 +54,16 @@ int main(int argc, char *argv[]) {
     w.show();
 
 #ifdef _DEBUG_
-    QFileSystemWatcher fileWatcher;
-    QString qss("./res/style.qss");
-    QFile qssFile(qss);
-
-    if (qssFile.open(QFile::ReadOnly)) {    // 2.
-        w.setStyleSheet(qssFile.readAll()); // 3.
-    }
-    qssFile.close();
-
-    qDebug() << qssFile.exists();
-
-    fileWatcher.addPath(qss);
-    QObject::connect(&fileWatcher, &QFileSystemWatcher::fileChanged, [&w, &qssFile]() {
-        qDebug() << "file changed";
-        if (qssFile.open(QFile::ReadOnly)) {
-            w.setStyleSheet(qssFile.readAll());
-            qssFile.close();
-        }
+    fileWatcher.addPath(styleSheetPath);
+    fileWatcher.addPath(styleSheetConfig);
+    realRefreshStyle();
+    QObject::connect(&fileWatcher, &QFileSystemWatcher::fileChanged, [](const QString &path) {
+        qDebug() << path << " is changed";
+        realRefreshStyle();
     });
 #else
-    QFile qssFile(":/qss/style.qss");       // 1.
-    if (qssFile.open(QFile::ReadOnly)) {    // 2.
-        w.setStyleSheet(qssFile.readAll()); // 3.
-    }
-    qssFile.close();                        // 4.
+    realRefreshStyle();
 #endif
-    // a.setStyle(QStyleFactory::create("Fusion"));
 
     return a.exec();
 }

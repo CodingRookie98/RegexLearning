@@ -6,19 +6,27 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1027</width>
-    <height>860</height>
+    <width>755</width>
+    <height>593</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_13">
+   <property name="sizeConstraint">
+    <enum>QLayout::SetMinimumSize</enum>
+   </property>
    <property name="horizontalSpacing">
-    <number>10</number>
+    <number>15</number>
    </property>
    <item row="0" column="1">
-    <widget class="QGroupBox" name="groupBox_2">
+    <widget class="QGroupBox" name="groupBox_cs4">
+     <property name="font">
+      <font>
+       <stylestrategy>PreferAntialias</stylestrategy>
+      </font>
+     </property>
      <property name="title">
       <string>字符类</string>
      </property>
@@ -52,13 +60,13 @@
         <property name="alignment">
          <set>Qt::AlignCenter</set>
         </property>
-        <widget class="QWidget" name="scrollAreaWidgetContents_2">
+        <widget class="QWidget" name="scrollAreaWidgetContents_4">
          <property name="geometry">
           <rect>
            <x>0</x>
            <y>0</y>
-           <width>327</width>
-           <height>817</height>
+           <width>233</width>
+           <height>550</height>
           </rect>
          </property>
          <layout class="QGridLayout" name="gridLayout_4">
@@ -82,6 +90,9 @@
             <property name="spacing">
              <number>0</number>
             </property>
+            <property name="sizeConstraint">
+             <enum>QLayout::SetMinimumSize</enum>
+            </property>
            </layout>
           </item>
          </layout>
@@ -97,11 +108,10 @@
       <number>15</number>
      </property>
      <item>
-      <widget class="QGroupBox" name="groupBox">
+      <widget class="QGroupBox" name="groupBox_cs1">
        <property name="font">
         <font>
-         <pointsize>9</pointsize>
-         <bold>false</bold>
+         <stylestrategy>PreferAntialias</stylestrategy>
         </font>
        </property>
        <property name="title">
@@ -127,20 +137,20 @@
          <number>0</number>
         </property>
         <item row="0" column="2">
-         <widget class="QScrollArea" name="scrollArea">
+         <widget class="QScrollArea" name="scrollArea_anchors">
           <property name="frameShape">
            <enum>QFrame::NoFrame</enum>
           </property>
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents">
+          <widget class="QWidget" name="scrollAreaWidgetContents_1">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>324</width>
-             <height>248</height>
+             <width>230</width>
+             <height>159</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_2">
@@ -164,6 +174,12 @@
               <property name="spacing">
                <number>0</number>
               </property>
+              <property name="sizeConstraint">
+               <enum>QLayout::SetMinimumSize</enum>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
              </layout>
             </item>
            </layout>
@@ -174,7 +190,12 @@
       </widget>
      </item>
      <item>
-      <widget class="QGroupBox" name="groupBox_4">
+      <widget class="QGroupBox" name="groupBox_cs2">
+       <property name="font">
+        <font>
+         <stylestrategy>PreferAntialias</stylestrategy>
+        </font>
+       </property>
        <property name="title">
         <string notr="true">标志</string>
        </property>
@@ -205,13 +226,13 @@
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_4">
+          <widget class="QWidget" name="scrollAreaWidgetContents_2">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>324</width>
-             <height>247</height>
+             <width>230</width>
+             <height>158</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_8">
@@ -235,6 +256,9 @@
               <property name="spacing">
                <number>0</number>
               </property>
+              <property name="sizeConstraint">
+               <enum>QLayout::SetMinimumSize</enum>
+              </property>
              </layout>
             </item>
            </layout>
@@ -245,7 +269,12 @@
       </widget>
      </item>
      <item>
-      <widget class="QGroupBox" name="groupBox_5">
+      <widget class="QGroupBox" name="groupBox_cs3">
+       <property name="font">
+        <font>
+         <stylestrategy>PreferAntialias</stylestrategy>
+        </font>
+       </property>
        <property name="title">
         <string>组和引用</string>
        </property>
@@ -276,13 +305,13 @@
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_5">
+          <widget class="QWidget" name="scrollAreaWidgetContents_3">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>324</width>
-             <height>248</height>
+             <width>230</width>
+             <height>159</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_10">
@@ -306,6 +335,9 @@
               <property name="spacing">
                <number>0</number>
               </property>
+              <property name="sizeConstraint">
+               <enum>QLayout::SetMinimumSize</enum>
+              </property>
              </layout>
             </item>
            </layout>
@@ -323,7 +355,12 @@
       <number>15</number>
      </property>
      <item>
-      <widget class="QGroupBox" name="groupBox_3">
+      <widget class="QGroupBox" name="groupBox_cs5">
+       <property name="font">
+        <font>
+         <stylestrategy>PreferAntialias</stylestrategy>
+        </font>
+       </property>
        <property name="title">
         <string>零宽断言</string>
        </property>
@@ -354,13 +391,13 @@
           <property name="widgetResizable">
            <bool>true</bool>
           </property>
-          <widget class="QWidget" name="scrollAreaWidgetContents_3">
+          <widget class="QWidget" name="scrollAreaWidgetContents_5">
            <property name="geometry">
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>324</width>
-             <height>390</height>
+             <width>230</width>
+             <height>256</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_6">
@@ -384,6 +421,9 @@
               <property name="spacing">
                <number>0</number>
               </property>
+              <property name="sizeConstraint">
+               <enum>QLayout::SetMinimumSize</enum>
+              </property>
              </layout>
             </item>
            </layout>
@@ -394,7 +434,12 @@
       </widget>
      </item>
      <item>
-      <widget class="QGroupBox" name="groupBox_6">
+      <widget class="QGroupBox" name="groupBox_cs6">
+       <property name="font">
+        <font>
+         <stylestrategy>PreferAntialias</stylestrategy>
+        </font>
+       </property>
        <property name="title">
         <string>量词与分支</string>
        </property>
@@ -430,8 +475,8 @@
             <rect>
              <x>0</x>
              <y>0</y>
-             <width>324</width>
-             <height>389</height>
+             <width>230</width>
+             <height>256</height>
             </rect>
            </property>
            <layout class="QGridLayout" name="gridLayout_12">
@@ -454,6 +499,9 @@
              <layout class="QVBoxLayout" name="quantifiersAndAlternation">
               <property name="spacing">
                <number>0</number>
+              </property>
+              <property name="sizeConstraint">
+               <enum>QLayout::SetMinimumSize</enum>
               </property>
              </layout>
             </item>

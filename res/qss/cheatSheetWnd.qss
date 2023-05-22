@@ -1,0 +1,54 @@
+QScrollArea {
+    background: transparent;
+}
+
+QGroupBox#groupBox_cs1,
+QGroupBox#groupBox_cs2,
+QGroupBox#groupBox_cs3,
+QGroupBox#groupBox_cs4,
+QGroupBox#groupBox_cs5,
+QGroupBox#groupBox_cs6 {
+    background: transparent;
+    font-size: 16px;
+    font-weight: bold;
+    /* border-radius: 6px; */
+}
+
+QWidget#scrollAreaWidgetContents_1,
+QWidget#scrollAreaWidgetContents_2,
+QWidget#scrollAreaWidgetContents_3,
+QWidget#scrollAreaWidgetContents_4,
+QWidget#scrollAreaWidgetContents_5,
+QWidget#scrollAreaWidgetContents_6 {
+    background: transparent;
+}
+
+/* ToolPage */
+QToolButton#itemButton {
+    background: transparent;
+    background-color: #5fe0ee;
+    border-radius: 8px;
+    border-style: outset;
+    border-width: 1px;
+    border-color: rgb(243, 246, 247);
+    padding-left: 4px;
+    padding-right: 4px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+QToolButton#itemButton:hover {
+    background: #39c9da;
+}
+
+QToolButton#itemButton:pressed {
+    background: #076e7a;
+}
+
+QLabel#ToolPage_description,
+Qlabel#ToolPage_text,
+Qlabel#ToolPage_regex {
+    font-size: 12px;
+}
