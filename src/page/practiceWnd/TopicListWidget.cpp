@@ -3,7 +3,7 @@
 #include "tool/helperFunc.h"
 #include <qjsonarray.h>
 
-const QString jsonFile_TopicInfo = ":/data/TopicInfo.json";
+const QString jsonFile_TopicInfo = ":/json/data/TopicInfo.json";
 
 TopicListWidget::TopicListWidget(QWidget *parent) :
     QListWidget(parent) {

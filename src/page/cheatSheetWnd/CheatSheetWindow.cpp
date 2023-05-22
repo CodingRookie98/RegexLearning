@@ -7,7 +7,7 @@
 #include <qjsonobject.h>
 #include <qjsonvalue.h>
 
-const QString jsonFile_cheatSheet = "://data/cheatSheet.json";
+const QString jsonFile_cheatSheet = ":/json/data/cheatSheet.json";
 const std::list<QString> groupName{
     "anchors", "characterClasses", "flags",
     "groupAndReferences", "lookarounds",

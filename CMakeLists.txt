@@ -61,7 +61,6 @@ qt_add_executable ( RegexLearning
     ./res/res.qrc
     ./res/StyleSheet.qrc
     ./res/homeWnd.qrc
-    ./res/json.qrc
 )
 
 target_link_libraries ( RegexLearning

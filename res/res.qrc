@@ -1,9 +1,7 @@
 <RCC>
     <qresource prefix="/img">
         <file>img/RegexIcon.png</file>
-        <file>img/background.jpg</file>
-        <file>img/background_1.jpg</file>
-        <file>img/alipay(300x300).jpg</file>
+        <file alias="/json">img/alipay(300x300).jpg</file>
         <file>img/wechat(300x300).png</file>
     </qresource>
     <qresource prefix="/svg">
@@ -24,5 +22,9 @@
     </qresource>
     <qresource prefix="/md">
         <file>data/about.md</file>
+    </qresource>
+    <qresource prefix="/json">
+        <file>data/cheatSheet.json</file>
+        <file>data/TopicInfo.json</file>
     </qresource>
 </RCC>
