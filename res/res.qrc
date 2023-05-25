@@ -27,4 +27,7 @@
         <file>data/cheatSheet.json</file>
         <file>data/TopicInfo.json</file>
     </qresource>
+    <qresource prefix="/ini">
+        <file>style.ini</file>
+    </qresource>
 </RCC>

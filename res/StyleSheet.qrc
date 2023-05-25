@@ -1,5 +1,11 @@
 <RCC>
     <qresource prefix="/qss">
         <file>style.qss</file>
+        <file>qss/aboutWnd.qss</file>
+        <file>qss/cheatSheetWnd.qss</file>
+        <file>qss/homeWnd.qss</file>
+        <file>qss/mainwindow.qss</file>
+        <file>qss/practiceWnd.qss</file>
+        <file>qss/regexTestWnd.qss</file>
     </qresource>
 </RCC>
