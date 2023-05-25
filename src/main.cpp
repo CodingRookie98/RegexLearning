@@ -44,9 +44,9 @@ void realRefreshTheme(QString &style) {
 void realRefreshStyle() {
     QFile file(styleSheetPath);
     if (file.open(QIODevice::ReadOnly)) {
-        qDebug() << "style.qss opened";
+        // qDebug() << "style.qss opened";
         QString style = file.readAll();
-        qDebug() << style;
+        // qDebug() << style;
         realRefreshTheme(style);
         qobject_cast<QApplication *>(QApplication::instance())->setStyleSheet(style);
         file.close();

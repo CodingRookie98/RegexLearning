@@ -30,7 +30,15 @@ void MainWindow::init() {
     this->btnGroup.addButton(ui->btnCheatSheet, 3);
     this->btnGroup.addButton(ui->btnAbout, 4);
 
-    this->setMinimumWidth(1000);
+#ifdef __linux__
+    // 解决wsl linux 下界面显示不全的问题
+    // w.showMaximized();
+    this->setMinimumWidth(1100);
+    // qDebug() << "Current system is Linux.";
+#else
+    this->setMinimumWidth(1100);
+    // qDebug() << "Current system is not Linux.";
+#endif
     ui->stackedWidget->setCurrentIndex(0);
 
     leftSideBarEvent();
