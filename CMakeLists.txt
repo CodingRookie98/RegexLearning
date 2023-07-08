@@ -12,34 +12,28 @@ set ( CMAKE_CXX_STANDARD_REQUIRED ON )
 if ( ${CMAKE_SYSTEM_NAME} MATCHES "Linux" )
     # Linux系统
     # 在这里添加针对Linux的特定配置
-    set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/bin/Debug-Linux )
-    Set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/bin/Release-Linux )
-    set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_CURRENT_SOURCE_DIR}/bin/minSizeRe-Linux )
+    set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/bin/linux/Debug )
+    Set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/bin/linux/Release )
+    set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_CURRENT_SOURCE_DIR}/bin/linux/minSizeRe )
 
-    set ( Boost_DIR "./3rdparty/boost-regex/lib-x64-linux/cmake/Boost-1.82.0" )
-    set ( Boost_USE_STATIC_RUNTIME ON )
 elseif ( ${CMAKE_SYSTEM_NAME} MATCHES "Windows" )
     # Windows系统
     # 在这里添加针对Windows的特定配置
-    set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/bin/Debug-Win )
-    Set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/bin/Release-Win )
-    set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_CURRENT_SOURCE_DIR}/bin/minSizeRe-Win )
-    set ( Boost_DIR "./3rdparty/boost-regex/lib-x64-win/cmake/Boost-1.82.0" )
-    # set ( Boost_USE_STATIC_RUNTIME ON )
+    set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_DEBUG ${CMAKE_CURRENT_SOURCE_DIR}/bin/win/Debug )
+    Set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE ${CMAKE_CURRENT_SOURCE_DIR}/bin/win/Release )
+    set ( CMAKE_RUNTIME_OUTPUT_DIRECTORY_MINSIZEREL ${CMAKE_CURRENT_SOURCE_DIR}/bin/win/minSizeRe )
 endif ()
 
 set ( CMAKE_INSTALL_PREFIX ${CMAKE_CURRENT_SOURCE_DIR}/install )
 
-
 find_package ( QT NAMES Qt6 REQUIRED COMPONENTS Widgets )
 find_package ( Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets )
-find_package ( Boost CONFIG REQUIRED COMPONENTS regex )
+find_package ( Boost REQUIRED COMPONENTS regex )
 
 include_directories (
     ./src/
     ./src/page/practiceWnd
     ./src/page/cheatSheetWnd
-    ./3rdparty/boost-regex/include
 )
 
 # 遍历所有.cpp、.h、.ui文件
@@ -77,19 +71,9 @@ set_target_properties ( RegexLearning PROPERTIES
     WIN32_EXECUTABLE TRUE
 )
 
-install ( TARGETS RegexLearning
-    CONFIGURATIONS Debug
-    BUNDLE DESTINATION bin/Debug
-    LIBRARY DESTINATION lib/Debug
-    RUNTIME DESTINATION bin/Debug
-)
-
-install ( TARGETS RegexLearning
-    CONFIGURATIONS Release
-    BUNDLE DESTINATION bin/Release
-    LIBRARY DESTINATION lib/Release
-    RUNTIME DESTINATION bin/Release
-)
+install(TARGETS RegexLearning
+        BUNDLE DESTINATION .
+        LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
 if ( QT_VERSION_MAJOR EQUAL 6 )
     qt_finalize_executable ( RegexLearning )
