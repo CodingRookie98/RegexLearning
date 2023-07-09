@@ -1,6 +1,4 @@
 #include "helperFunc.h"
-#include "boost/regex/v5/match_flags.hpp"
-#include "boost/regex/v5/regex_fwd.hpp"
 #include "tool/helperFunc.h"
 #include <qregularexpression.h>
 #include <string>

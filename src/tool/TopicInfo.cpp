@@ -1,7 +1,6 @@
 
-#include "./topicinfo.h"
 #include <memory>
-
+#include "TopicInfo.h"
 TopicInfo::TopicInfo(QListWidget *parent) :
     QListWidgetItem(parent) {
     text = std::make_shared<std::vector<QString>>();
