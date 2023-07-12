@@ -1,0 +1,9 @@
+{
+  "name" : "regexlearning",
+  "version-string" : "1.0.0",
+  "builtin-baseline" : "228987a6fdbd56739a16d47eacf6e79d71a47973",
+  "dependencies" : [ {
+    "name" : "boost-regex",
+    "version>=" : "1.82.0#2"
+  } ]
+}
