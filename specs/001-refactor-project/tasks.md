@@ -19,13 +19,13 @@ description: "Task list for Refactoring RegexLearning to Tauri/React/TS"
 
 **Purpose**: Project initialization, toolchain setup, and foundational architecture.
 
-- [ ] T001 Initialize Tauri v2 + React + TypeScript project structure in `src/` and `src-tauri/`
-- [ ] T002 [P] Configure Vitest + JSDOM + `@tauri-apps/api/mocks` (setup `tests/setup.ts`, `vitest.config.ts`)
-- [ ] T003 [P] Configure Tailwind CSS/CSS Variables + "Zero FOUC" script in `index.html` (Theme Strategy)
-- [ ] T004 [P] Configure `react-i18next` with type-safe JSON resources in `src/locales/` & `src/i18n.ts`
-- [ ] T005 [P] Setup `tauri-plugin-store` in Rust backend (`src-tauri/src/lib.rs`) and frontend service (`src/services/store.ts`)
-- [ ] T006 Implement `useTheme` hook with TDD in `src/hooks/useTheme.ts` (Theme persistence logic)
-- [ ] T007 Implement `App.tsx` layout shell with Navigation and Theme/Language switchers
+- [x] T001 Initialize Tauri v2 + React + TypeScript project structure in `src/` and `src-tauri/`
+- [x] T002 [P] Configure Vitest + JSDOM + `@tauri-apps/api/mocks` (setup `tests/setup.ts`, `vitest.config.ts`)
+- [x] T003 [P] Configure Tailwind CSS/CSS Variables + "Zero FOUC" script in `index.html` (Theme Strategy)
+- [x] T004 [P] Configure `react-i18next` with type-safe JSON resources in `src/locales/` & `src/i18n.ts`
+- [x] T005 [P] Setup `tauri-plugin-store` in Rust backend (`src-tauri/src/lib.rs`) and frontend service (`src/services/store.ts`)
+- [x] T006 Implement `useTheme` hook with TDD in `src/hooks/useTheme.ts` (Theme persistence logic)
+- [x] T007 Implement `App.tsx` layout shell with Navigation and Theme/Language switchers
 
 ---
 
@@ -33,10 +33,10 @@ description: "Task list for Refactoring RegexLearning to Tauri/React/TS"
 
 **Purpose**: Core data loading and type definitions required by all stories.
 
-- [ ] T008 Define TypeScript interfaces in `src/types/index.ts` (`Topic`, `CheatSheetItem`, `UserProgress`)
-- [ ] T009 [P] Create `TopicInfo.json` and `cheatSheet.json` in `src/assets/data/` (Ported from legacy)
-- [ ] T010 Implement `DataService` with TDD to load JSON assets in `src/services/dataService.ts`
-- [ ] T011 Implement `StoreService` wrapper with TDD for user progress persistence in `src/services/storeService.ts`
+- [x] T008 Define TypeScript interfaces in `src/types/index.ts` (`Topic`, `CheatSheetItem`, `UserProgress`)
+- [x] T009 [P] Create `TopicInfo.json` and `cheatSheet.json` in `src/assets/data/` (Ported from legacy)
+- [x] T010 Implement `DataService` with TDD to load JSON assets in `src/services/dataService.ts`
+- [x] T011 Implement `StoreService` wrapper with TDD for user progress persistence in `src/services/storeService.ts`
 
 **Checkpoint**: Foundation ready - Type definitions, Data loading, Storage, and Layout are in place.
 
@@ -48,15 +48,15 @@ description: "Task list for Refactoring RegexLearning to Tauri/React/TS"
 **Independent Test**: Verify topic list renders from JSON and clicking a topic shows details.
 
 ### Tests for User Story 1 (MANDATORY) ⚠️
-- [ ] T012 [P] [US1] Create unit tests for `useTopics` hook (loading data) in `src/features/learn/hooks/useTopics.test.ts`
-- [ ] T013 [P] [US1] Create component tests for `TopicList` (rendering, selection) in `src/features/learn/components/TopicList.test.tsx`
-- [ ] T014 [P] [US1] Create component tests for `TopicDetail` (content display) in `src/features/learn/components/TopicDetail.test.tsx`
+- [x] T012 [P] [US1] Create unit tests for `useTopics` hook (loading data) in `src/features/learn/hooks/useTopics.test.ts`
+- [x] T013 [P] [US1] Create component tests for `TopicList` (rendering, selection) in `src/features/learn/components/TopicList.test.tsx`
+- [x] T014 [P] [US1] Create component tests for `TopicDetail` (content display) in `src/features/learn/components/TopicDetail.test.tsx`
 
 ### Implementation for User Story 1
-- [ ] T015 [US1] Implement `useTopics` hook in `src/features/learn/hooks/useTopics.ts`
-- [ ] T016 [P] [US1] Implement `TopicList` component in `src/features/learn/components/TopicList.tsx`
-- [ ] T017 [P] [US1] Implement `TopicDetail` component in `src/features/learn/components/TopicDetail.tsx`
-- [ ] T018 [US1] Integrate Learn module into `src/features/learn/LearnPage.tsx` and Route config
+- [x] T015 [US1] Implement `useTopics` hook in `src/features/learn/hooks/useTopics.ts`
+- [x] T016 [P] [US1] Implement `TopicList` component in `src/features/learn/components/TopicList.tsx`
+- [x] T017 [P] [US1] Implement `TopicDetail` component in `src/features/learn/components/TopicDetail.tsx`
+- [x] T018 [US1] Integrate Learn module into `src/features/learn/LearnPage.tsx` and Route config
 
 ---
 
@@ -66,14 +66,14 @@ description: "Task list for Refactoring RegexLearning to Tauri/React/TS"
 **Independent Test**: Verify input validation against expected answers updates UI state (Success/Fail).
 
 ### Tests for User Story 2 (MANDATORY) ⚠️
-- [ ] T019 [P] [US2] Create unit tests for `regexValidator` utility in `src/utils/regexValidator.test.ts`
-- [ ] T020 [P] [US2] Create integration tests for `PracticePage` (input -> validation -> progress update) in `src/features/practice/PracticePage.test.tsx`
+- [x] T019 [P] [US2] Create unit tests for `regexValidator` utility in `src/utils/regexValidator.test.ts`
+- [x] T020 [P] [US2] Create integration tests for `PracticePage` (input -> validation -> progress update) in `src/features/practice/PracticePage.test.tsx`
 
 ### Implementation for User Story 2
-- [ ] T021 [P] [US2] Implement `regexValidator` logic in `src/utils/regexValidator.ts` (JS `RegExp` based)
-- [ ] T022 [US2] Implement `usePractice` hook (validation state, progress persistence) in `src/features/practice/hooks/usePractice.ts`
-- [ ] T023 [P] [US2] Implement `PracticeInput` component with status indicators in `src/features/practice/components/PracticeInput.tsx`
-- [ ] T024 [US2] Integrate Practice module into `src/features/practice/PracticePage.tsx`
+- [x] T021 [P] [US2] Implement `regexValidator` logic in `src/utils/regexValidator.ts` (JS `RegExp` based)
+- [x] T022 [US2] Implement `usePractice` hook (validation state, progress persistence) in `src/features/practice/hooks/usePractice.ts`
+- [x] T023 [P] [US2] Implement `PracticeInput` component with status indicators in `src/features/practice/components/PracticeInput.tsx`
+- [x] T024 [US2] Integrate Practice module into `src/features/practice/PracticePage.tsx`
 
 ---
 
@@ -83,13 +83,13 @@ description: "Task list for Refactoring RegexLearning to Tauri/React/TS"
 **Independent Test**: Verify arbitrary text input highlights correctly matches regex pattern.
 
 ### Tests for User Story 3 (MANDATORY) ⚠️
-- [ ] T025 [P] [US3] Create logic tests for `highlightMatches` utility in `src/utils/highlightMatches.test.ts`
-- [ ] T026 [P] [US3] Create component tests for `SandboxEditor` in `src/features/sandbox/components/SandboxEditor.test.tsx`
+- [x] T025 [P] [US3] Create logic tests for `highlightMatches` utility in `src/utils/highlightMatches.test.ts`
+- [x] T026 [P] [US3] Create component tests for `SandboxEditor` in `src/features/sandbox/components/SandboxEditor.test.tsx`
 
 ### Implementation for User Story 3
-- [ ] T027 [P] [US3] Implement `highlightMatches` utility (returns marked text/nodes) in `src/utils/highlightMatches.ts`
-- [ ] T028 [US3] Implement `SandboxEditor` component (Regex Input + Text Area + Highlighter) in `src/features/sandbox/components/SandboxEditor.tsx`
-- [ ] T029 [US3] Integrate Sandbox module into `src/features/sandbox/SandboxPage.tsx`
+- [x] T027 [P] [US3] Implement `highlightMatches` utility (returns marked text/nodes) in `src/utils/highlightMatches.ts`
+- [x] T028 [US3] Implement `SandboxEditor` component (Regex Input + Text Area + Highlighter) in `src/features/sandbox/components/SandboxEditor.tsx`
+- [x] T029 [US3] Integrate Sandbox module into `src/features/sandbox/SandboxPage.tsx`
 
 ---
 
@@ -99,11 +99,11 @@ description: "Task list for Refactoring RegexLearning to Tauri/React/TS"
 **Independent Test**: Verify static list renders correctly grouped by category.
 
 ### Tests for User Story 4 (MANDATORY) ⚠️
-- [ ] T030 [P] [US4] Create snapshot test for `CheatSheetPage` in `src/features/cheatsheet/CheatSheetPage.test.tsx`
+- [x] T030 [P] [US4] Create snapshot test for `CheatSheetPage` in `src/features/cheatsheet/CheatSheetPage.test.tsx`
 
 ### Implementation for User Story 4
-- [ ] T031 [P] [US4] Implement `CheatSheetItem` component in `src/features/cheatsheet/components/CheatSheetItem.tsx`
-- [ ] T032 [US4] Implement `CheatSheetPage` (grouping logic + rendering) in `src/features/cheatsheet/CheatSheetPage.tsx`
+- [x] T031 [P] [US4] Implement `CheatSheetItem` component in `src/features/cheatsheet/components/CheatSheetItem.tsx`
+- [x] T032 [US4] Implement `CheatSheetPage` (grouping logic + rendering) in `src/features/cheatsheet/CheatSheetPage.tsx`
 
 ---
 
@@ -111,12 +111,12 @@ description: "Task list for Refactoring RegexLearning to Tauri/React/TS"
 
 **Purpose**: Performance, final integration, and cleanup.
 
-- [ ] T033 [P] Add error boundaries for each feature module
-- [ ] T034 Verify strict type safety (run `tsc --noEmit`)
-- [ ] T035 [P] Ensure all text is using `t()` from `react-i18next` (Extraction check)
-- [ ] T036 Run full test suite (`npm run test`) and verify 100% UI logic coverage
-- [ ] T037 Manual verification of persistence (restart app -> check progress/theme)
-- [ ] T038 Verify zero distinct logical regressions compared to C++ version (Manual Walkthrough)
+- [x] T033 [P] Add error boundaries for each feature module
+- [x] T034 Verify strict type safety (run `tsc --noEmit`)
+- [x] T035 [P] Ensure all text is using `t()` from `react-i18next` (Extraction check)
+- [x] T036 Run full test suite (`npm run test`) and verify 100% UI logic coverage
+- [x] T037 Manual verification of persistence (restart app -> check progress/theme)
+- [x] T038 Verify zero distinct logical regressions compared to C++ version (Manual Walkthrough)
 
 ---
 
