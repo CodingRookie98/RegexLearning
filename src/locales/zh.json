@@ -9,6 +9,24 @@
   "common": {
     "tryAgain": "重试",
     "loading": "加载中...",
-    "error": "错误"
+    "error": "错误: {{message}}",
+    "topicNotFound": "未找到主题"
+  },
+  "cheatsheet": {
+    "title": "正则速查表"
+  },
+  "learn": {
+    "examples": "示例:",
+    "selectTopic": "选择一个主题开始学习"
+  },
+  "practice": {
+    "loading": "加载练习中...",
+    "testText": "测试文本 (高亮匹配):"
+  },
+  "sandbox": {
+    "regexLabel": "正则表达式",
+    "testStringLabel": "测试文本",
+    "regexPlaceholder": "输入正则表达式...",
+    "testStringPlaceholder": "在此输入测试文本..."
   }
 }

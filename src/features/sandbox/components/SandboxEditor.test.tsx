@@ -15,21 +15,21 @@ vi.mock('../../../utils/highlightMatches', () => ({
 describe('SandboxEditor Component', () => {
   it('renders input fields', () => {
     render(<SandboxEditor />);
-    expect(screen.getByPlaceholderText(/regex/i)).toBeInTheDocument();
-    expect(screen.getByPlaceholderText(/test string/i)).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('sandbox.regexPlaceholder')).toBeInTheDocument();
+    expect(screen.getByPlaceholderText('sandbox.testStringPlaceholder')).toBeInTheDocument();
   });
 
   it('updates regex input', () => {
     render(<SandboxEditor />);
-    const input = screen.getByPlaceholderText(/regex/i);
+    const input = screen.getByPlaceholderText('sandbox.regexPlaceholder');
     fireEvent.change(input, { target: { value: 'abc' } });
     expect(input).toHaveValue('abc');
   });
 
   it('renders highlighted text', () => {
     render(<SandboxEditor />);
-    const textInput = screen.getByPlaceholderText(/test string/i);
-    const regexInput = screen.getByPlaceholderText(/regex/i);
+    const textInput = screen.getByPlaceholderText('sandbox.testStringPlaceholder');
+    const regexInput = screen.getByPlaceholderText('sandbox.regexPlaceholder');
 
     fireEvent.change(textInput, { target: { value: 'match' } });
     fireEvent.change(regexInput, { target: { value: 'match' } });

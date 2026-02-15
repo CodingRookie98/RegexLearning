@@ -23,6 +23,6 @@ describe('TopicDetail Component', () => {
 
   it('renders empty state when no topic selected', () => {
     render(<TopicDetail topic={null} />);
-    expect(screen.getByText(/Select a topic/i)).toBeInTheDocument();
+    expect(screen.getByText('learn.selectTopic')).toBeInTheDocument();
   });
 });

@@ -3,7 +3,7 @@ import { SandboxEditor } from './components/SandboxEditor';
 
 export const SandboxPage: React.FC = () => {
   return (
-    <div className="h-[calc(100vh-64px)]">
+    <div className="h-full w-full overflow-hidden">
       <SandboxEditor />
     </div>
   );

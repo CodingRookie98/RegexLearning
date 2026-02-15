@@ -9,6 +9,24 @@
   "common": {
     "tryAgain": "Try again",
     "loading": "Loading...",
-    "error": "Error"
+    "error": "Error: {{message}}",
+    "topicNotFound": "Topic not found"
+  },
+  "cheatsheet": {
+    "title": "Regex Cheat Sheet"
+  },
+  "learn": {
+    "examples": "Examples:",
+    "selectTopic": "Select a topic to start learning"
+  },
+  "practice": {
+    "loading": "Loading practice...",
+    "testText": "Test Text (Matches Highlighted):"
+  },
+  "sandbox": {
+    "regexLabel": "Regular Expression",
+    "testStringLabel": "Test String",
+    "regexPlaceholder": "Enter regex...",
+    "testStringPlaceholder": "Type test string here..."
   }
 }

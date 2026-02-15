@@ -1,47 +1,59 @@
 # PROJECT KNOWLEDGE BASE
 
-**Generated:** 2026-02-15
-**Stack:** C++17, Qt6, CMake, vcpkg
+**Updated:** 2026-02-15
+**Stack:** Tauri v2, React 19, TypeScript, Tailwind CSS, Vite
 
 ## OVERVIEW
-Desktop application for learning Regular Expressions. Built with Qt Widgets.
-Core logic involves interactive regex matching against JSON-defined scenarios.
+Modern desktop application for learning Regular Expressions, refactored from a legacy C++/Qt codebase.
+Core logic involves interactive regex matching using JavaScript's native `RegExp` engine.
 
 ## STRUCTURE
 ```
 .
-├── src/          # Source code (Flat structure + Modules)
-├── res/          # Resources (QSS, Icons, JSON Data)
-├── CMakeLists.txt # Build configuration (Manual output paths)
-└── vcpkg.json    # Dependencies (Boost::regex)
+├── src/                  # Frontend Source (React)
+│   ├── features/         # Feature Modules (Learn, Practice, Sandbox, CheatSheet)
+│   ├── components/       # Shared UI Components
+│   ├── hooks/            # Custom React Hooks (useTheme, etc.)
+│   ├── services/         # Data & Persistence Services
+│   ├── utils/            # Core Logic (Regex Validation, Highlighting)
+│   ├── assets/           # Static Assets (JSON Data)
+│   └── locales/          # i18n Translation Files
+├── src-tauri/            # Backend Source (Rust)
+│   ├── src/              # Rust Entry Point & Plugins
+│   └── tauri.conf.json   # Tauri Configuration
+├── specs/                # Project Specifications & Plans
+└── tests/                # Test Configuration
 ```
 
-## WHERE TO LOOK
-| Task | Location | Notes |
-|------|----------|-------|
-| **Entry Point** | `src/main.cpp` | App init, theme loader |
-| **Main UI** | `src/mainwindow.cpp` | Navigation controller |
-| **Features** | `src/page/*Wnd` | Distinct functional windows |
-| **Regex Data** | `res/data/TopicInfo.json` | Lessons & Validation rules |
-| **Styles** | `res/qss` | Qt Stylesheets (Theme engine) |
+## KEY FEATURES
+| Feature | Location | Description |
+|---------|----------|-------------|
+| **Learn** | `src/features/learn` | Interactive lessons with sidebar navigation and prose content. |
+| **Practice** | `src/features/practice` | Regex validation exercises with visual feedback. |
+| **Sandbox** | `src/features/sandbox` | Free-form regex testing with real-time highlighting. |
+| **CheatSheet** | `src/features/cheatsheet` | Categorized reference guide. |
+
+## ARCHITECTURE
+- **Frontend**: React Functional Components + Hooks.
+- **State Management**: Local State (useState) + Persistence via `tauri-plugin-store`.
+- **Styling**: Tailwind CSS with Dark Mode support (`class` strategy).
+- **i18n**: `react-i18next` with English/Chinese support.
+- **Testing**: Vitest + React Testing Library (TDD approach).
 
 ## COMMANDS
 ```bash
-# Build (Standard CMake)
-cmake -B build -S . -DCMAKE_TOOLCHAIN_FILE=[vcpkg_root]/scripts/buildsystems/vcpkg.cmake
-cmake --build build
+# Development
+npm run tauri dev   # Start app in dev mode
 
-# Run
-./build/bin/win/Debug/RegexLearning.exe  # Path varies by OS/Config
+# Testing
+npm run test        # Run unit/integration tests
+
+# Build
+npm run tauri build # Build production bundle
 ```
 
 ## CONVENTIONS
-- **Qt**: Uses `Qt6::Widgets`.
-- **Resources**: Accessed via `:/` prefix (e.g., `:/res/img/`).
-- **Data**: JSON files in `res/data` drive the application logic.
-- **Styling**: Custom `.qss` reloading mechanism in `main.cpp`.
-
-## ANTI-PATTERNS (THIS PROJECT)
-- **Do not** hardcode output paths in CMake (Legacy pattern present).
-- **Do not** use `file(GLOB_RECURSE)` for source lists (Legacy pattern present).
-- **Avoid** placing logic in `src/` root if it belongs in `page/`.
+- **Strict Typing**: No `any`. All data structures defined in `src/types`.
+- **TDD**: Write tests in `*.test.tsx` before implementation.
+- **Components**: Functional components with strict prop types.
+- **Localization**: All UI text must use `t('key')`.

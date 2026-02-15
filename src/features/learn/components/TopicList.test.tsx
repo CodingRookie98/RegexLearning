@@ -32,7 +32,7 @@ describe('TopicList Component', () => {
     );
 
     const selectedBtn = screen.getByText('Topic 1').closest('button');
-    expect(selectedBtn).toHaveClass('bg-blue-100');
+    expect(selectedBtn).toHaveClass('text-blue-600');
     // Adjust class expectation based on your actual styling
   });
 
