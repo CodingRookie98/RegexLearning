@@ -2,3 +2,33 @@
 /.agents/
 /.opencode/
 /.trae/
+
+# Node.js
+node_modules/
+dist/
+build/
+*.log
+.env
+.env.*
+
+# Tauri
+src-tauri/target/
+src-tauri/gen/schemas/
+src-tauri/gen/android/
+src-tauri/gen/apple/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*.tmp
+coverage/
+npm-debug.log
+yarn-debug.log
+yarn-error.log
+pnpm-debug.log
