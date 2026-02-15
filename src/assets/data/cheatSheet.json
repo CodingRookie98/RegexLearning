@@ -1,0 +1,28 @@
+{
+  "cheatSheetArray": [
+    {
+      "title": "Any Character",
+      "code": ".",
+      "description": "Matches any single character except line terminators.",
+      "category": "Character Classes"
+    },
+    {
+      "title": "Digit",
+      "code": "\\d",
+      "description": "Matches any digit (0-9).",
+      "category": "Character Classes"
+    },
+    {
+      "title": "Start of String",
+      "code": "^",
+      "description": "Matches the start of the string.",
+      "category": "Anchors"
+    },
+    {
+      "title": "End of String",
+      "code": "$",
+      "description": "Matches the end of the string.",
+      "category": "Anchors"
+    }
+  ]
+}

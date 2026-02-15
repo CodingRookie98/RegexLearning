@@ -1,0 +1,14 @@
+{
+  "welcome": "欢迎使用正则学习",
+  "nav": {
+    "learn": "学习",
+    "practice": "练习",
+    "sandbox": "沙盒",
+    "cheatsheet": "速查表"
+  },
+  "common": {
+    "tryAgain": "重试",
+    "loading": "加载中...",
+    "error": "错误"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "topicInfoArray": [
+    {
+      "id": 1,
+      "title": "Introduction",
+      "text": [
+        "Understand? OK or NOT"
+      ],
+      "description": "Regex is short for Regular Expression. It allows you to match, locate, and manage text. Please type `OK` in the input box to start the first step to learn more details.",
+      "answer": "OK"
+    },
+    {
+      "id": 2,
+      "title": "What is Regex?",
+      "description": "A regular expression is a string that represents a search pattern, often abbreviated as `Regex` or `Regexp`. It is often used to find and replace words in text. In addition, we can test whether the text conforms to the rules we set.\n\n For example, if you only want to find files with the extension `pdf` in a list of file names, you can simply type `^\\w+\\.pdf$` to find them. As the course progresses, the meaning of the expression will become clearer.",
+      "text": [
+        "readme.md",
+        "document.pdf",
+        "image.png",
+        "music.mp4",
+        "manual.pdf"
+      ],
+      "answer": "^\\w+\\.pdf$"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "welcome": "Welcome to Regex Learning",
+  "nav": {
+    "learn": "Learn",
+    "practice": "Practice",
+    "sandbox": "Sandbox",
+    "cheatsheet": "Cheat Sheet"
+  },
+  "common": {
+    "tryAgain": "Try again",
+    "loading": "Loading...",
+    "error": "Error"
+  }
+}
