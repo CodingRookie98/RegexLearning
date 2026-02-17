@@ -1,41 +1,766 @@
 [
   {
-    "id": "basic-001",
-    "title": "Match Lowercase Letters",
-    "description": "Write a regex that matches only lowercase letters.",
+    "id": "challenge-001",
+    "title": "介绍",
+    "description": "Regex 是正则表达式（Regular Expression）的简称。它便于匹配、查找和管理文本。请在输入框中键入 `OK`，开始第一步以了解更多的细节。",
     "difficulty": "Basic",
-    "tags": ["character-class", "basic"],
+    "tags": [
+      "regex",
+      "basic"
+    ],
     "testCases": [
-      { "input": "abc", "shouldMatch": true },
-      { "input": "ABC", "shouldMatch": false },
-      { "input": "123", "shouldMatch": false },
-      { "input": "a1b", "shouldMatch": false }
+      {
+        "input": "Understand? OK or NOT",
+        "shouldMatch": true
+      }
     ]
   },
   {
-    "id": "basic-002",
-    "title": "Match Digits",
-    "description": "Write a regex that matches any digit.",
+    "id": "challenge-002",
+    "title": "什么是「正则表达式」？",
+    "description": "正则表达式是表示搜索模式的字符串，常缩写成 `Regex` 或 `Regexp`。它常用于查找和替换文本中的字词。此外，我们可以测试文本是否符合我们设置的规则。\n\n 例如，您只想查找文件名列表中，扩展名是 `pdf` 的文件，那您只需跟着输入 `^\\w+\\.pdf$` 就可以找到。随着课程的进行，表达式的含义会变得更加清晰。",
     "difficulty": "Basic",
-    "tags": ["digit", "basic"],
+    "tags": [
+      "regex",
+      "basic"
+    ],
     "testCases": [
-      { "input": "123", "shouldMatch": true },
-      { "input": "abc", "shouldMatch": false },
-      { "input": "1a2", "shouldMatch": false }
+      {
+        "input": "readme.md",
+        "shouldMatch": true
+      },
+      {
+        "input": "document.pdf",
+        "shouldMatch": true
+      },
+      {
+        "input": "image.png",
+        "shouldMatch": true
+      },
+      {
+        "input": "music.mp4",
+        "shouldMatch": true
+      },
+      {
+        "input": "manual.pdf",
+        "shouldMatch": true
+      }
     ]
   },
   {
-    "id": "intermediate-001",
-    "title": "Match Email Address",
-    "description": "Write a regex that matches a simple email address format (user@domain.com).",
+    "id": "challenge-003",
+    "title": "基本匹配",
+    "description": "我们想要查找的字符或单词可以直接输入，就像搜索一样。例如，要找出文本中的 `curious` 一词，只需输入同样的内容。",
+    "difficulty": "Basic",
+    "tags": [
+      "regex",
+      "basic"
+    ],
+    "testCases": [
+      {
+        "input": "I have no special talents. I am only passionately curious.",
+        "shouldMatch": true
+      },
+      {
+        "input": "― Albert Einstein",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-004",
+    "title": "点 .：任何字符",
+    "description": "`.` 允许匹配任何字符，包括特殊字符和空格。",
+    "difficulty": "Basic",
+    "tags": [
+      "regex",
+      "basic"
+    ],
+    "testCases": [
+      {
+        "input": "abcABC123 .:!?",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-005",
+    "title": "字符集 [abc]",
+    "description": "如果一个词中的字符可以是各种字符，我们就将所有的可选字符写进中括号 `[]` 中。例如，为了查找文本中的所有单词，我们需要编写表达式，在 `[]` 中相邻地输入字符 `a`、`e`、`i`、`o`、`u`。",
+    "difficulty": "Basic",
+    "tags": [
+      "regex",
+      "basic"
+    ],
+    "testCases": [
+      {
+        "input": "bar ber bir bor bur",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-006",
+    "title": "否定字符集 [^abc]",
+    "description": "为了查找下方文本的所有单词（`ber` 和 `bor` 除外），请在 `[]` 中的 `^` 后面并排输入 `e` 和 `o`。",
+    "difficulty": "Basic",
+    "tags": [
+      "regex",
+      "basic"
+    ],
+    "testCases": [
+      {
+        "input": "bar ber bir bor bur",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-007",
+    "title": "字母范围 [a-z]",
+    "description": "为了查找指定范围的字母，我们需要将起始字母和结束字母写进 `[]` 中，中间用连字符 `-` 分隔。它区分大小写。请编写表达式，匹配 `e` 和 `o` 之间所有的小写字母，包括它们本身。",
+    "difficulty": "Basic",
+    "tags": [
+      "regex",
+      "basic"
+    ],
+    "testCases": [
+      {
+        "input": "abcdefghijklmnopqrstuvwxyz",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-008",
+    "title": "数字范围 [0-9]",
+    "description": "为了查找指定范围的数字，我们需要在 `[]` 中输入起始和结束数字，中间用连字符 `-` 分隔。请编写表达式，匹配 `3` 到 `6` 之间的所有数字，包括它们本身。",
+    "difficulty": "Basic",
+    "tags": [
+      "regex",
+      "basic"
+    ],
+    "testCases": [
+      {
+        "input": "0123456789",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-009",
+    "title": "练习：基本匹配",
+    "description": "请编写表达式，匹配文本中的单词 `of`。",
+    "difficulty": "Basic",
+    "tags": [
+      "regex",
+      "basic"
+    ],
+    "testCases": [
+      {
+        "input": "“Every man takes the limits of his own field of vision for the limits of the world.”",
+        "shouldMatch": true
+      },
+      {
+        "input": "― Arthur Schopenhauer",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-010",
+    "title": "练习：匹配任意字符",
+    "description": "请编写表达式，匹配文本中所有字母、数字、空格和特殊字符。表达式必须匹配任何字符。",
+    "difficulty": "Basic",
+    "tags": [
+      "regex",
+      "basic"
+    ],
+    "testCases": [
+      {
+        "input": "az AZ 09 _- = !? ., :;",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-011",
+    "title": "练习：字符集",
+    "description": "写出匹配文本中所有单词的表达式。单词首字母是唯一变化的字符。",
+    "difficulty": "Basic",
+    "tags": [
+      "regex",
+      "basic"
+    ],
+    "testCases": [
+      {
+        "input": "beer deer feer",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-012",
+    "title": "练习：否定字符集",
+    "description": "请编写表达式，匹配除 `beor` 和 `beur` 以外的所有单词。要求使用否定字符集完成。",
+    "difficulty": "Basic",
+    "tags": [
+      "regex",
+      "basic"
+    ],
+    "testCases": [
+      {
+        "input": "bear beor beer beur",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-013",
+    "title": "练习：字母范围",
+    "description": "请编写表达式，匹配 `g` 到 `k` 之间的所有字母，包括它们本身。",
+    "difficulty": "Basic",
+    "tags": [
+      "regex",
+      "basic"
+    ],
+    "testCases": [
+      {
+        "input": "abcdefghijklmnopqrstuvwxyz",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-014",
+    "title": "练习：数字范围",
+    "description": "请编写表达式，匹配 `2` 到 `7` 之间的所有数字，包括它们本身。",
+    "difficulty": "Basic",
+    "tags": [
+      "regex",
+      "basic"
+    ],
+    "testCases": [
+      {
+        "input": "0123456789",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-015",
+    "title": "星号 *",
+    "description": "我们在字符后面加上 `*`，表示一个字符完全不匹配或可以匹配多次。例如，表示字母 `e` 在下方文本中不出现，只出现 1 次或者并排出现多次。",
+    "difficulty": "Basic",
+    "tags": [
+      "regex",
+      "basic"
+    ],
+    "testCases": [
+      {
+        "input": "br ber beer",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-016",
+    "title": "加号 +",
+    "description": "为了表示一个字符可以出现一次或多次，我们将 `+` 放在它后面。例如，表示 `e` 在下方文本中出现一次或多次。",
     "difficulty": "Intermediate",
-    "tags": ["email", "practical"],
+    "tags": [
+      "regex",
+      "intermediate"
+    ],
     "testCases": [
-      { "input": "test@example.com", "shouldMatch": true },
-      { "input": "user.name@domain.co.uk", "shouldMatch": true },
-      { "input": "invalid-email", "shouldMatch": false },
-      { "input": "@domain.com", "shouldMatch": false },
-      { "input": "user@", "shouldMatch": false }
+      {
+        "input": "br ber beer",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-017",
+    "title": "问号 ?",
+    "description": "为了表示一个字符是可选的，我们在它后面加一个 `?`。例如，表示下方文本中的字母 `u` 是可选的。",
+    "difficulty": "Intermediate",
+    "tags": [
+      "regex",
+      "intermediate"
+    ],
+    "testCases": [
+      {
+        "input": "color, colour",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-018",
+    "title": "大括号 - 1",
+    "description": "为了表示一个字符出现的确切次数，我们在该字符的末尾，将它出现的次数写进大括号 `{}` 中，如 `{n}`。例如，表示下方文本中的字母 `e` 只能出现 `2` 次。",
+    "difficulty": "Intermediate",
+    "tags": [
+      "regex",
+      "intermediate"
+    ],
+    "testCases": [
+      {
+        "input": "ber beer beeer beeeer",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-022",
+    "title": "大括号 - 2",
+    "description": "为了表示一个字符至少出现多少次，我们在该字符的末尾，将它至少应出现的次数写进大括号 `{}` 中，并在数字后面加上逗号 `,`，如 `{n, }`。例如，表示下方文本中的字母 `e` 至少出现 `3` 次。",
+    "difficulty": "Intermediate",
+    "tags": [
+      "regex",
+      "intermediate"
+    ],
+    "testCases": [
+      {
+        "input": "ber beer beeer beeeer",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-023",
+    "title": "大括号 - 3",
+    "description": "为了表示一些字符出现的次数在某个数字范围内，我们在该字符的末尾，将它至少和至多出现的次数写进大括号 `{}` 中，中间用逗号 `,` 分隔，如 `{x,y}`。例如，匹配下方文本中，字母 `e` 出现 `1` 至 `3` 次的单词。",
+    "difficulty": "Intermediate",
+    "tags": [
+      "regex",
+      "intermediate"
+    ],
+    "testCases": [
+      {
+        "input": "ber beer beeer beeeer",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-025",
+    "title": "练习：星号 *",
+    "description": "请编写表达式，用 `*` 匹配下方文本中，没有或存在多个字母 `e` 的单词。",
+    "difficulty": "Intermediate",
+    "tags": [
+      "regex",
+      "intermediate"
+    ],
+    "testCases": [
+      {
+        "input": "dp dep deep",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-026",
+    "title": "练习：加号 +",
+    "description": "请编写表达式，用 `+` 匹配下方文本中，字母 `e` 出现一次或多次的单词。",
+    "difficulty": "Intermediate",
+    "tags": [
+      "regex",
+      "intermediate"
+    ],
+    "testCases": [
+      {
+        "input": "dp dep deep",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-027",
+    "title": "练习：问号 ?",
+    "description": "请编写表达式，用 `?` 表示字母 `n` 在文本中是可选的，使 `a` 和 `an` 都可以匹配到。",
+    "difficulty": "Intermediate",
+    "tags": [
+      "regex",
+      "intermediate"
+    ],
+    "testCases": [
+      {
+        "input": "a, an",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-028",
+    "title": "练习：大括号 - 1",
+    "description": "用 `{}` 编写表达式，匹配文本中的 `4` 位阿拉伯数字。",
+    "difficulty": "Intermediate",
+    "tags": [
+      "regex",
+      "intermediate"
+    ],
+    "testCases": [
+      {
+        "input": "Release 10/9/2021",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-029",
+    "title": "练习：大括号 - 2",
+    "description": "用 `{}` 编写表达式，匹配文本中，位数至少为 `2` 的阿拉伯数字。",
+    "difficulty": "Intermediate",
+    "tags": [
+      "regex",
+      "intermediate"
+    ],
+    "testCases": [
+      {
+        "input": "Release 10/9/2021",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-030",
+    "title": "练习：大括号 - 3",
+    "description": "用 `{}` 编写表达式，匹配文本中，位数为 `1` 至 `4` 的阿拉伯数字。",
+    "difficulty": "Intermediate",
+    "tags": [
+      "regex",
+      "intermediate"
+    ],
+    "testCases": [
+      {
+        "input": "Release 10/9/2021",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-031",
+    "title": "括号 ( ): 分组",
+    "description": "我们可以对一个表达式进行分组，并用这些分组来引用或执行一些规则。为了给表达式分组，我们需要将文本包裹在 `()` 中。现在，请尝试为下方文本中的 `haa` 构造分组。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "ha-ha,haa-haa",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-032",
+    "title": "引用组",
+    "description": "单词 `ha` 和 `haa` 分组如下。第一组用 `\\1` 来避免重复书写。这里的 `1` 表示分组的顺序。请在表达式的末尾键入 `\\2` 以引用第二组。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "ha-ha,haa-haa",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-033",
+    "title": "括号 (?: ): 非捕获分组",
+    "description": "您可以对表达式进行分组，并确保它不被引用捕获。例如，下面有两个分组，但我们用 `\\1` 引用的第一个组实际上是指向第二个组，因为第一个是未被捕获的分组。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "ha-ha,haa-haa",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-034",
+    "title": "竖线 |",
+    "description": "竖线允许一个表达式包含多个不同的分支。所有分支用 `|` 分隔。和在字符层面上运作的字符集 `[abc]` 不同，分支在表达式层面上运作。例如，下面的表达式同时匹配 `cat` 和 `rat`。请在末尾添加另一个 `|`，并输入 `dog` 以匹配所有单词。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "cat rat dog",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-035",
+    "title": "转义字符 \\",
+    "description": "在书写正则表达式时，我们会用到 `{ } [ ] / \\ + * . $^ | ?` 这些特殊字符 。为了匹配这些特殊字符本身，我们需要通过 `\\` 将它们转义。例如，要匹配文本中的 `.` 和 `*`，我们需要在它们前面添加一个 `\\`。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "(*) Asterisk.",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-036",
+    "title": "插入符 ^: 匹配字符串的开始",
+    "description": "我们用 `[0-9]` 查找数字，若仅查找行首的数字，请在表达式前面加上 `^`。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "Basic Omellette Recipe",
+        "shouldMatch": true
+      },
+      {
+        "input": "1. 3 eggs, beaten",
+        "shouldMatch": true
+      },
+      {
+        "input": "2. 1 tsp sunflower oil",
+        "shouldMatch": true
+      },
+      {
+        "input": "3. 1 tsp butter",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-037",
+    "title": "美元符号 $:\\n匹配字符串的结束",
+    "description": "让我们在 `html` 的后面添加 `$`，来查找仅在行末出现的 `html`。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "https://domain.com/what-is-html.html",
+        "shouldMatch": true
+      },
+      {
+        "input": "https://otherdomain.com/html-elements",
+        "shouldMatch": true
+      },
+      {
+        "input": "https://website.com/html5-features.html",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-038",
+    "title": "单词字符 \\w : 字母、数字和下划线",
+    "description": "表达式 `\\w` 用于查找字母、数字和下划线。让我们用表达式 `\\w` 来查找文本中的单词字符。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "abcABC123 _.:!?",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-039",
+    "title": "非单词字符 \\W",
+    "description": "`\\W` 匹配除字母、数字和下划线之外的字符。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "abcABC123 _.:!?",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-040",
+    "title": "数字字符 \\d",
+    "description": "`\\d` 仅用来匹配数字。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "abcABC123 .:!?",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-041",
+    "title": "非数字字符 \\D",
+    "description": "`\\D` 匹配除数字之外的字符。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "abcABC123 .:!?",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-042",
+    "title": "空白符 \\s",
+    "description": "`\\s` 仅匹配空白字符。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "abcABC123 .:!?",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-043",
+    "title": "非空白符 \\S",
+    "description": "`\\S` 匹配除空白符之外的字符。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "abcABC123 .:!?",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-044",
+    "title": "正向先行断言: (?=)",
+    "description": "例如，我们要匹配文本中的小时值。为了只匹配后面有 `PM` 的数值，我们需要在表达式后面使用正向先行断言 `(?=)`，并在括号内的 `=` 后面添加 `PM`。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "Date: 4 Aug 3PM",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-045",
+    "title": "负向先行断言: (?!)",
+    "description": "例如，我们要在文本中匹配除小时值以外的数字。我们需要在表达式后面使用负向先行断言 `(?!)`，并在括号内的 `!` 后面添加 `PM`，从而只匹配没有 `PM` 的数值。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "Date: 4 Aug 3PM",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-046",
+    "title": "正向后行断言: (?\\<=)",
+    "description": "例如，我们要匹配文本中的金额数。为了只匹配前面带有 `$` 的数字。我们要在表达式前面使用正向后行断言 `(?<=)`，并在括号内的 `=` 后面添加 `\\$`。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "Product Code: 1064 Price: $5",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-047",
+    "title": "负向后行断言: (?\\<!)",
+    "description": "例如，我们要在文本中匹配除价格外的数字。为了只匹配前面没有 `$` 的数字，我们要在表达式前用负向后行断言 `(?&lt;!)`，并在括号内的 `!` 后面添加 `\\$`。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "Product Code: 1064 Price: $5",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-048",
+    "title": "贪婪匹配",
+    "description": "正则表达式默认执行贪婪匹配。这意味着匹配内容会尽可能长。请看下面的示例，它匹配任何以 `r` 结尾的字符串，以及前面带有该字符串的文本，但它不会在第一个 `r` 处停止匹配。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "ber beer beeer beeeer",
+        "shouldMatch": true
+      }
+    ]
+  },
+  {
+    "id": "challenge-049",
+    "title": "懒惰匹配",
+    "description": "与贪婪匹配不同，懒惰匹配在第一次匹配时停止。下面的例子中，在 `*` 之后添加 `?`，将查找以 `r` 结尾且前面带有任意字符的第一个匹配项。这意味着本次匹配将会在第一个字母 `r` 处停止。",
+    "difficulty": "Advanced",
+    "tags": [
+      "regex",
+      "advanced"
+    ],
+    "testCases": [
+      {
+        "input": "ber beer beeer beeeer",
+        "shouldMatch": true
+      }
     ]
   }
 ]
