@@ -1,11 +1,12 @@
-# PROJECT KNOWLEDGE BASE
+﻿# PROJECT KNOWLEDGE BASE
 
-**Updated:** 2026-02-15
-**Stack:** Tauri v2, React 19, TypeScript, Tailwind CSS, Vite
+**Updated:** 2026-02-16
+**Stack:** Tauri v2, React 19, TypeScript, Tailwind CSS v4, Vite, shadcn/ui, Radix UI
 
 ## OVERVIEW
-Modern desktop application for learning Regular Expressions, refactored from a legacy C++/Qt codebase.
+Modern desktop application for learning Regular Expressions.
 Core logic involves interactive regex matching using JavaScript's native `RegExp` engine.
+UI is built with a strictly typed, component-based architecture using `shadcn/ui`.
 
 ## STRUCTURE
 ```
@@ -13,7 +14,10 @@ Core logic involves interactive regex matching using JavaScript's native `RegExp
 ├── src/                  # Frontend Source (React)
 │   ├── features/         # Feature Modules (Learn, Practice, Sandbox, CheatSheet)
 │   ├── components/       # Shared UI Components
-│   ├── hooks/            # Custom React Hooks (useTheme, etc.)
+│   │   ├── ui/           # shadcn/ui primitives (Button, Input, etc.)
+│   │   └── layout/       # App-wide layouts (AppLayout)
+│   ├── hooks/            # Custom React Hooks
+│   ├── lib/              # Utilities (cn, etc.)
 │   ├── services/         # Data & Persistence Services
 │   ├── utils/            # Core Logic (Regex Validation, Highlighting)
 │   ├── assets/           # Static Assets (JSON Data)
@@ -28,15 +32,16 @@ Core logic involves interactive regex matching using JavaScript's native `RegExp
 ## KEY FEATURES
 | Feature | Location | Description |
 |---------|----------|-------------|
-| **Learn** | `src/features/learn` | Interactive lessons with sidebar navigation and prose content. |
+| **Learn** | `src/features/learn` | Interactive lessons with sidebar navigation. |
 | **Practice** | `src/features/practice` | Regex validation exercises with visual feedback. |
 | **Sandbox** | `src/features/sandbox` | Free-form regex testing with real-time highlighting. |
-| **CheatSheet** | `src/features/cheatsheet` | Categorized reference guide. |
+| **CheatSheet** | `src/features/cheatsheet` | Categorized reference guide using Cards. |
 
 ## ARCHITECTURE
 - **Frontend**: React Functional Components + Hooks.
+- **Design System**: `shadcn/ui` (Radix UI + Tailwind v4) with Light/Dark/System theme support.
 - **State Management**: Local State (useState) + Persistence via `tauri-plugin-store`.
-- **Styling**: Tailwind CSS with Dark Mode support (`class` strategy).
+- **Styling**: Tailwind CSS v4 with CSS variables for theming.
 - **i18n**: `react-i18next` with English/Chinese support.
 - **Testing**: Vitest + React Testing Library (TDD approach).
 
@@ -53,6 +58,7 @@ npm run tauri build # Build production bundle
 ```
 
 ## CONVENTIONS
+- **Language**: Conversations and documentation should be primarily in Chinese.
 - **Strict Typing**: No `any`. All data structures defined in `src/types`.
 - **TDD**: Write tests in `*.test.tsx` before implementation.
 - **Components**: Functional components with strict prop types.

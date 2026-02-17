@@ -1,5 +1,7 @@
 import React from 'react';
 import { Topic } from '../../../types';
+import { Button } from '@/components/ui/button';
+import { cn } from '@/lib/utils';
 
 interface TopicListProps {
   topics: Topic[];
@@ -13,28 +15,33 @@ export const TopicList: React.FC<TopicListProps> = ({
   onSelectTopic 
 }) => {
   return (
-    <div className="flex flex-col gap-1 w-64 border-r border-gray-200 dark:border-gray-700 h-full overflow-y-auto p-3 bg-gray-50/50 dark:bg-gray-800/50">
-      <h3 className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2 px-2">
-        Topics
-      </h3>
-      {topics.map((topic) => (
-        <button
-          key={topic.id}
-          onClick={() => onSelectTopic(topic.id)}
-          className={`
-            text-left px-3 py-2 rounded-md transition-all duration-200 text-sm
-            ${selectedTopicId === topic.id 
-              ? 'bg-white dark:bg-gray-700 text-blue-600 dark:text-blue-400 font-medium shadow-sm ring-1 ring-gray-200 dark:ring-gray-600' 
-              : 'text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 hover:text-gray-900 dark:hover:text-gray-200'
-            }
-          `}
-        >
-          <div className="flex items-center gap-2">
-            <span className={`w-1.5 h-1.5 rounded-full ${selectedTopicId === topic.id ? 'bg-blue-500' : 'bg-gray-300 dark:bg-gray-600'}`} />
-            {topic.title}
-          </div>
-        </button>
-      ))}
+    <div className="flex flex-col w-64 border-r bg-muted/10 h-full">
+      <div className="p-4 border-b">
+        <h3 className="text-sm font-medium text-muted-foreground uppercase tracking-wider">
+          Topics
+        </h3>
+      </div>
+      <div className="flex-1 overflow-y-auto p-2 space-y-1">
+        {topics.map((topic) => (
+          <Button
+            key={topic.id}
+            variant={selectedTopicId === topic.id ? "secondary" : "ghost"}
+            className={cn(
+              "w-full justify-start text-sm font-normal",
+              selectedTopicId === topic.id && "bg-secondary font-medium"
+            )}
+            onClick={() => onSelectTopic(topic.id)}
+          >
+            <div className="flex items-center gap-2 w-full">
+              <span className={cn(
+                "w-2 h-2 rounded-full",
+                selectedTopicId === topic.id ? "bg-primary" : "bg-muted-foreground/30"
+              )} />
+              <span className="truncate">{topic.title}</span>
+            </div>
+          </Button>
+        ))}
+      </div>
     </div>
   );
 };

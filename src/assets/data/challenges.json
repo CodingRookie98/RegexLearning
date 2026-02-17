@@ -1,0 +1,41 @@
+[
+  {
+    "id": "basic-001",
+    "title": "Match Lowercase Letters",
+    "description": "Write a regex that matches only lowercase letters.",
+    "difficulty": "Basic",
+    "tags": ["character-class", "basic"],
+    "testCases": [
+      { "input": "abc", "shouldMatch": true },
+      { "input": "ABC", "shouldMatch": false },
+      { "input": "123", "shouldMatch": false },
+      { "input": "a1b", "shouldMatch": false }
+    ]
+  },
+  {
+    "id": "basic-002",
+    "title": "Match Digits",
+    "description": "Write a regex that matches any digit.",
+    "difficulty": "Basic",
+    "tags": ["digit", "basic"],
+    "testCases": [
+      { "input": "123", "shouldMatch": true },
+      { "input": "abc", "shouldMatch": false },
+      { "input": "1a2", "shouldMatch": false }
+    ]
+  },
+  {
+    "id": "intermediate-001",
+    "title": "Match Email Address",
+    "description": "Write a regex that matches a simple email address format (user@domain.com).",
+    "difficulty": "Intermediate",
+    "tags": ["email", "practical"],
+    "testCases": [
+      { "input": "test@example.com", "shouldMatch": true },
+      { "input": "user.name@domain.co.uk", "shouldMatch": true },
+      { "input": "invalid-email", "shouldMatch": false },
+      { "input": "@domain.com", "shouldMatch": false },
+      { "input": "user@", "shouldMatch": false }
+    ]
+  }
+]

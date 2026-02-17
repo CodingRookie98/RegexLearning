@@ -3,6 +3,7 @@ import { useTranslation } from 'react-i18next';
 import { DataService } from '../../services/dataService';
 import { CheatSheetItem as ICheatSheetItem } from '../../types';
 import { CheatSheetItem } from './components/CheatSheetItem';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export const CheatSheetPage: React.FC = () => {
   const { t } = useTranslation();
@@ -27,28 +28,30 @@ export const CheatSheetPage: React.FC = () => {
     return groups;
   }, [items]);
 
-  if (loading) return <div className="flex items-center justify-center h-full text-gray-500">{t('common.loading')}</div>;
+    if (loading) return <div className="flex items-center justify-center h-full text-muted-foreground">{t('common.loading')}</div>;
 
   return (
-    <div className="h-full w-full overflow-y-auto p-6 bg-gray-50 dark:bg-gray-900">
+      <div className="h-full w-full overflow-y-auto p-6 bg-background">
       <div className="max-w-4xl mx-auto pb-10">
-        <h2 className="text-3xl font-bold mb-8 text-gray-900 dark:text-gray-100">{t('cheatsheet.title')}</h2>
-        
-        <div className="flex flex-col gap-8">
+              <h2 className="mb-8">{t('cheatsheet.title')}</h2>
+
+              <div className="flex flex-col gap-6">
           {Object.entries(groupedItems).map(([category, categoryItems]) => (
-            <div key={category} className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden transition-all hover:shadow-md">
-              <div className="bg-gray-50 dark:bg-gray-800/50 px-6 py-4 border-b border-gray-200 dark:border-gray-700">
-                <h3 className="font-bold text-lg text-gray-800 dark:text-gray-200 flex items-center gap-2">
-                  <span className="w-1 h-6 bg-blue-500 rounded-full"></span>
+              <Card key={category}>
+                  <CardHeader className="bg-muted/40 py-4 border-b">
+                      <CardTitle className="flex items-center gap-2 text-lg">
+                          <span className="w-1 h-5 bg-primary rounded-full" />
                   {category}
-                </h3>
-              </div>
-              <div className="divide-y divide-gray-100 dark:divide-gray-700/50">
-                {categoryItems.map((item, index) => (
-                  <CheatSheetItem key={index} item={item} />
-                ))}
-              </div>
-            </div>
+                      </CardTitle>
+                  </CardHeader>
+                  <CardContent className="p-0">
+                      <div className="divide-y">
+                          {categoryItems.map((item, index) => (
+                              <CheatSheetItem key={index} item={item} />
+                          ))}
+                      </div>
+                  </CardContent>
+              </Card>
           ))}
         </div>
       </div>

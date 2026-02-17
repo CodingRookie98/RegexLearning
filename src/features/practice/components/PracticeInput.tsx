@@ -1,4 +1,7 @@
 import React from 'react';
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
+import { cn } from '@/lib/utils';
 
 interface PracticeInputProps {
   value: string;
@@ -15,53 +18,46 @@ export const PracticeInput: React.FC<PracticeInputProps> = ({
 }) => {
   return (
     <div className="flex flex-col gap-2 w-full max-w-2xl mx-auto">
-      <label className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 ml-1">
+      <Label className="mb-1 ml-1 text-muted-foreground">
         Your Regex Pattern
-      </label>
+      </Label>
       <div className="relative group">
-        <div className={`absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none ${
-          status === 'error' ? 'text-red-400' : 'text-gray-400'
-        }`}>
+        <div className={cn(
+          "absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none",
+          status === 'error' ? "text-destructive" : "text-muted-foreground"
+        )}>
           <span className="font-mono text-lg font-bold">/</span>
         </div>
-        <input
+        
+        <Input
           type="text"
           value={value}
           onChange={(e) => onChange(e.target.value)}
-          className={`
-            w-full pl-8 pr-12 py-4 rounded-xl border-2 font-mono text-lg shadow-sm transition-all duration-200
-            bg-white dark:bg-gray-800 
-            text-gray-900 dark:text-gray-100
-            placeholder-gray-400 dark:placeholder-gray-500
-            focus:outline-none focus:ring-4 focus:ring-opacity-20
-            ${status === 'success' 
-              ? 'border-green-500 focus:border-green-500 focus:ring-green-500' 
-              : ''}
-            ${status === 'error' 
-              ? 'border-red-500 focus:border-red-500 focus:ring-red-500' 
-              : ''}
-            ${status === 'idle' 
-              ? 'border-gray-200 dark:border-gray-700 focus:border-blue-500 focus:ring-blue-500 hover:border-gray-300 dark:hover:border-gray-600' 
-              : ''}
-          `}
+          className={cn(
+            "pl-7 pr-12 py-6 font-mono text-lg shadow-sm transition-all duration-200",
+            status === 'success' && "border-green-500 focus-visible:ring-green-500/50",
+            status === 'error' && "border-destructive focus-visible:ring-destructive/50",
+            status === 'idle' && "focus-visible:ring-primary/50"
+          )}
           placeholder="Type pattern..."
           autoFocus
           spellCheck={false}
         />
-        <div className="absolute inset-y-0 right-0 pr-4 flex items-center pointer-events-none">
+        
+        <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none gap-2">
           {status === 'success' && (
             <span className="text-green-500 text-xl font-bold">✓</span>
           )}
           {status === 'error' && (
-            <span className="text-red-500 text-xl font-bold">!</span>
+            <span className="text-destructive text-xl font-bold">!</span>
           )}
-          <span className="text-gray-400 font-mono text-lg font-bold ml-2">/g</span>
+          <span className="text-muted-foreground font-mono text-lg font-bold">/g</span>
         </div>
       </div>
       
-      <div className={`h-6 transition-all duration-300 ${errorMessage ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-2'}`}>
+      <div className={cn("h-6 transition-all duration-300", errorMessage ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-2")}>
         {errorMessage && (
-          <p className="text-sm text-red-500 font-medium flex items-center gap-1 ml-1">
+          <p className="text-sm text-destructive font-medium flex items-center gap-1 ml-1">
             <span>⚠️</span> {errorMessage}
           </p>
         )}

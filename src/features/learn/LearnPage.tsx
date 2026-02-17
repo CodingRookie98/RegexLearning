@@ -25,11 +25,11 @@ export const LearnPage: React.FC = () => {
   }
 
   return (
-    <div className="flex h-full w-full overflow-hidden bg-white dark:bg-gray-900">
-      <TopicList 
-        topics={topics} 
-        selectedTopicId={selectedTopicId} 
-        onSelectTopic={setSelectedTopicId} 
+      <div className="flex h-full w-full overflow-hidden bg-background">
+          <TopicList
+              topics={topics}
+              selectedTopicId={selectedTopicId}
+              onSelectTopic={setSelectedTopicId}
       />
       <TopicDetail topic={selectedTopic} />
     </div>
