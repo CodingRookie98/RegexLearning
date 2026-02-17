@@ -13,7 +13,15 @@
     "topicNotFound": "未找到主题"
   },
   "cheatsheet": {
-    "title": "正则速查表"
+    "title": "正则速查表",
+    "categories": {
+        "Anchors": "锚点",
+        "Character Classes": "字符类",
+        "Flags": "标志",
+        "Group And References": "分组与引用",
+        "Lookarounds": "零宽断言",
+        "Quantifiers And Alternation": "量词与分支"
+    }
   },
   "learn": {
     "examples": "示例:",
@@ -28,5 +36,32 @@
     "testStringLabel": "测试文本",
     "regexPlaceholder": "输入正则表达式...",
     "testStringPlaceholder": "在此输入测试文本..."
+},
+"home": {
+    "learn": {
+        "title": "学习",
+        "desc": "逐步学习正则表达式，从零基础到高阶。学习正则比您想象的要容易得多。",
+        "action": "开始学习"
+    },
+    "practice": {
+        "title": "题库",
+        "desc": "通过精选的挑战列表测试您的正则知识。解决问题并跟踪您的学习进度。",
+        "action": "开始挑战"
+    },
+    "cheatsheet": {
+        "title": "备忘单",
+        "desc": "在一个页面上查看所有正则表达式模式和符号。使用备忘单快速探索和查询。",
+        "action": "立即查看"
+    },
+    "playground": {
+        "title": "游乐场",
+        "desc": "在沙盒环境中构建和测试您的正则表达式。验证您的正则并在团队中分享。",
+        "action": "前往游乐场"
+    },
+    "opensource": {
+        "title": "开源 Regex Learning",
+        "desc": "是一个开源项目，欢迎社区贡献和免费使用。参与这个项目可以帮助您磨炼技能、学习和协作。您可以点击这里，贡献和支持本项目。",
+        "action": "立即查看"
+    }
   }
 }

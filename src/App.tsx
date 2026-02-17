@@ -3,27 +3,28 @@ import { useTranslation } from 'react-i18next';
 import { ErrorBoundary } from 'react-error-boundary';
 import { ErrorFallback } from './components/ErrorFallback';
 import { LearnPage } from './features/learn/LearnPage';
-import { PracticePage } from './features/practice/PracticePage';
 import { SandboxPage } from './features/sandbox/SandboxPage';
 import { CheatSheetPage } from './features/cheatsheet/CheatSheetPage';
 import { ChallengesPage } from './features/challenges/ChallengesPage';
 import { ChallengeDetail } from './features/challenges/components/ChallengeDetail';
+import { HomePage } from './features/home/HomePage';
 import { AppLayout } from './components/layout/AppLayout';
 import { ThemeToggle } from './components/theme-toggle';
 import { cn } from './lib/utils';
+import { Home, BookOpen, FlaskConical, FileText, Puzzle } from 'lucide-react';
 
-type View = 'learn' | 'practice' | 'sandbox' | 'cheatsheet' | 'challenges';
+type View = 'home' | 'learn' | 'sandbox' | 'cheatsheet' | 'challenges';
 
 function App() {
     const { t, i18n } = useTranslation();
-  const [currentView, setCurrentView] = useState<View>('learn');
+    const [currentView, setCurrentView] = useState<View>('home');
     const [selectedChallengeId, setSelectedChallengeId] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
   const renderView = () => {
     switch (currentView) {
-      case 'learn': return <LearnPage />;
-      case 'practice': return <PracticePage />;
+        case 'home': return <HomePage onNavigate={setCurrentView} />;
+        case 'learn': return <LearnPage />;
       case 'sandbox': return <SandboxPage />;
       case 'cheatsheet': return <CheatSheetPage />;
         case 'challenges':
@@ -31,16 +32,16 @@ function App() {
                 return <ChallengeDetail challengeId={selectedChallengeId} onBack={() => setSelectedChallengeId(null)} />;
             }
             return <ChallengesPage onNavigateToChallenge={setSelectedChallengeId} />;
-      default: return <LearnPage />;
+        default: return <HomePage onNavigate={setCurrentView} />;
     }
   };
 
-  const navItems: { id: View; label: string; icon: string }[] = [
-    { id: 'learn', label: 'Learn', icon: '📚' },
-    { id: 'practice', label: 'Practice', icon: '✍️' },
-    { id: 'sandbox', label: 'Sandbox', icon: '🧪' },
-    { id: 'cheatsheet', label: 'Cheatsheet', icon: '📝' },
-      { id: 'challenges', label: 'Question Bank', icon: '🧩' },
+    const navItems: { id: View; label: string; icon: React.ReactNode }[] = [
+        { id: 'home', label: 'Home', icon: <Home className="w-5 h-5" /> },
+        { id: 'learn', label: 'Learn', icon: <BookOpen className="w-5 h-5" /> },
+        { id: 'sandbox', label: 'Sandbox', icon: <FlaskConical className="w-5 h-5" /> },
+        { id: 'cheatsheet', label: 'Cheatsheet', icon: <FileText className="w-5 h-5" /> },
+        { id: 'challenges', label: 'Question Bank', icon: <Puzzle className="w-5 h-5" /> },
   ];
 
     const sidebarContent = (

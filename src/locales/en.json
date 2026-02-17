@@ -13,7 +13,15 @@
     "topicNotFound": "Topic not found"
   },
   "cheatsheet": {
-    "title": "Regex Cheat Sheet"
+    "title": "Regex Cheat Sheet",
+    "categories": {
+        "Anchors": "Anchors",
+        "Character Classes": "Character Classes",
+        "Flags": "Flags",
+        "Group And References": "Group & References",
+        "Lookarounds": "Lookarounds",
+        "Quantifiers And Alternation": "Quantifiers & Alternation"
+    }
   },
   "learn": {
     "examples": "Examples:",
@@ -28,5 +36,32 @@
     "testStringLabel": "Test String",
     "regexPlaceholder": "Enter regex...",
     "testStringPlaceholder": "Type test string here..."
+},
+"home": {
+    "learn": {
+        "title": "Learn",
+        "desc": "Step-by-step learning of regex, from zero to advanced. Learning regex is easier than you think.",
+        "action": "Start Learning"
+    },
+    "practice": {
+        "title": "Question Bank",
+        "desc": "Test your regex knowledge with a curated list of challenges. Solve problems and track your progress.",
+        "action": "Start Challenges"
+    },
+    "cheatsheet": {
+        "title": "Cheatsheet",
+        "desc": "All regex patterns and symbols on a single page. Use the cheatsheet to explore and reference quickly.",
+        "action": "View Now"
+    },
+    "playground": {
+        "title": "Playground",
+        "desc": "Build and test your regex patterns in a sandbox environment. Verify your regex and share with your team.",
+        "action": "Go to Playground"
+    },
+    "opensource": {
+        "title": "Open Source",
+        "desc": "Regex Learning is an open-source project. Contribute to help others refine their skills.",
+        "action": "View on GitHub"
+    }
   }
 }
