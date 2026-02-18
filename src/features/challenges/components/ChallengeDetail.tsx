@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useTranslation } from "react-i18next";
 import { Challenge } from "@/types/challenge";
 import { ChallengeService } from "@/services/challengeService";
 import { ChallengeProgressService } from "@/services/challengeProgressService";
@@ -15,6 +16,7 @@ interface ChallengeDetailProps {
 }
 
 export function ChallengeDetail({ challengeId, onBack }: ChallengeDetailProps) {
+    const { t } = useTranslation();
     const [challenge, setChallenge] = useState<Challenge | null>(null);
     const [loading, setLoading] = useState(true);
 
@@ -25,13 +27,14 @@ export function ChallengeDetail({ challengeId, onBack }: ChallengeDetailProps) {
         });
     }, [challengeId]);
 
-    if (loading) return <div className="p-8 text-center text-muted-foreground">Loading challenge...</div>;
-    if (!challenge) return <div className="p-8 text-center text-destructive">Challenge not found.</div>;
+    if (loading) return <div className="p-8 text-center text-muted-foreground">{t('challenges.detail.loading')}</div>;
+    if (!challenge) return <div className="p-8 text-center text-destructive">{t('challenges.detail.notFound')}</div>;
 
     return <ChallengeSolver challenge={challenge} onBack={onBack} />;
 }
 
 function ChallengeSolver({ challenge, onBack }: { challenge: Challenge; onBack: () => void }) {
+    const { t } = useTranslation();
     const { regexPattern, setRegexPattern, validationResults, isSuccess } = useChallengeValidation(challenge);
     const [isCompleted, setIsCompleted] = useState(false);
 
@@ -69,17 +72,17 @@ function ChallengeSolver({ challenge, onBack }: { challenge: Challenge; onBack: 
                 {/* Left Pane: Description */}
                 <div className="space-y-6 overflow-y-auto pr-2">
                     <div className="prose dark:prose-invert max-w-none">
-                        <h3 className="text-xl font-semibold mb-2">Problem Description</h3>
+                        <h3 className="text-xl font-semibold mb-2">{t('challenges.detail.description')}</h3>
                         <p className="text-lg leading-relaxed text-muted-foreground">
                             {challenge.description}
                         </p>
                     </div>
 
                     <div className="bg-muted p-4 rounded-lg border">
-                        <h4 className="font-semibold mb-2 text-sm uppercase tracking-wide opacity-70">Goal</h4>
+                        <h4 className="font-semibold mb-2 text-sm uppercase tracking-wide opacity-70">{t('challenges.detail.goal')}</h4>
                         <ul className="list-disc list-inside space-y-1 text-sm">
-                            <li>Write a Regular Expression that matches all positive test cases.</li>
-                            <li>Ensure it does not match any negative test cases.</li>
+                            <li>{t('challenges.detail.goal1')}</li>
+                            <li>{t('challenges.detail.goal2')}</li>
                         </ul>
                     </div>
                 </div>
@@ -87,14 +90,14 @@ function ChallengeSolver({ challenge, onBack }: { challenge: Challenge; onBack: 
                 {/* Right Pane: Editor & Validation */}
                 <div className="flex flex-col gap-6 h-full min-h-0">
                     <div className="space-y-2 shrink-0">
-                        <Label>Regular Expression</Label>
+                        <Label>{t('challenges.detail.regexLabel')}</Label>
                         <div className="relative font-mono text-lg">
                             <span className="absolute left-3 top-1/2 -translate-y-1/2 text-muted-foreground font-bold">/</span>
                             <Input
                                 value={regexPattern}
                                 onChange={(e) => setRegexPattern(e.target.value)}
                                 className="pl-7 pr-10 py-6 text-lg font-mono"
-                                placeholder="Type your regex here..."
+                                placeholder={t('challenges.detail.regexPlaceholder')}
                                 autoFocus
                             />
                             <span className="absolute right-3 top-1/2 -translate-y-1/2 text-muted-foreground font-bold">/g</span>
@@ -102,7 +105,7 @@ function ChallengeSolver({ challenge, onBack }: { challenge: Challenge; onBack: 
                         {isSuccess && (
                             <div className="text-green-600 dark:text-green-400 font-medium text-sm flex items-center gap-2 animate-in fade-in slide-in-from-top-1">
                                 <CheckCircle className="w-4 h-4" />
-                                Excellent! All test cases passed.
+                                {t('challenges.detail.success')}
                             </div>
                         )}
                     </div>

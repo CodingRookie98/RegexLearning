@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Button } from "@/components/ui/button";
 import { Difficulty } from "@/types/challenge";
 import { cn } from "@/lib/utils";
@@ -9,6 +10,7 @@ interface FilterBarProps {
 }
 
 export function FilterBar({ selectedDifficulty, onSelect, className }: FilterBarProps) {
+    const { t } = useTranslation();
   const filters: (Difficulty | 'All')[] = ['All', 'Basic', 'Intermediate', 'Advanced'];
 
   return (
@@ -24,7 +26,7 @@ export function FilterBar({ selectedDifficulty, onSelect, className }: FilterBar
             selectedDifficulty === filter && "bg-background shadow-sm hover:bg-background"
           )}
         >
-          {filter}
+              {t(`challenges.difficulty.${filter.toLowerCase()}`)}
         </Button>
       ))}
     </div>

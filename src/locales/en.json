@@ -4,7 +4,44 @@
     "learn": "Learn",
     "practice": "Practice",
     "sandbox": "Sandbox",
-    "cheatsheet": "Cheat Sheet"
+    "cheatsheet": "Cheat Sheet",
+    "challenges": "Question Bank",
+    "settings": "Settings"
+},
+"settings": {
+    "title": "Settings",
+    "subtitle": "Manage your preferences and data",
+    "appearance": {
+        "title": "Appearance",
+        "desc": "Customize the look and feel of the application",
+        "theme": "Theme",
+        "light": "Light",
+        "dark": "Dark",
+        "system": "System"
+    },
+    "language": {
+        "title": "Language",
+        "desc": "Select your preferred language",
+        "select": "Language"
+    },
+    "data": {
+        "title": "Data Management",
+        "desc": "Manage your learning progress and data",
+        "resetLabel": "Reset Progress",
+        "resetHelp": "This will delete all your progress and achievements. This action cannot be undone.",
+        "resetBtn": "Reset Progress",
+        "resetConfirm": "Are you sure you want to reset all progress? This action cannot be undone.",
+        "resetSuccess": "Progress reset successfully.",
+        "resetError": "Failed to reset progress."
+    },
+    "about": {
+        "github": "Source Code",
+        "credits": "Credits",
+        "creditsDesc": "Inspired by regexlearn.com",
+        "contact": "Contact",
+        "quote": "Some people, when confronted with a problem, think \"I know, I'll use regular expressions.\" Now they have two problems.",
+        "quoteAuthor": "Jamie Zawinski"
+    }
   },
   "common": {
     "tryAgain": "Try again",
@@ -62,6 +99,46 @@
         "title": "Open Source",
         "desc": "Regex Learning is an open-source project. Contribute to help others refine their skills.",
         "action": "View on GitHub"
+    }
+},
+"challenges": {
+    "title": "Question Bank",
+    "subtitle": "Explore regex challenges and track your mastery.",
+    "list": {
+        "loading": "Loading challenges...",
+        "empty": "No challenges found for this category."
+    },
+    "difficulty": {
+        "all": "All",
+        "basic": "Basic",
+        "intermediate": "Intermediate",
+        "advanced": "Advanced"
+    },
+    "card": {
+        "completed": "Completed",
+        "practiceAgain": "Practice Again",
+        "start": "Start Challenge"
+    },
+    "detail": {
+        "loading": "Loading challenge...",
+        "notFound": "Challenge not found.",
+        "description": "Problem Description",
+        "goal": "Goal",
+        "goal1": "Write a Regular Expression that matches all positive test cases.",
+        "goal2": "Ensure it does not match any negative test cases.",
+        "regexLabel": "Regular Expression",
+        "regexPlaceholder": "Type your regex here...",
+        "success": "Excellent! All test cases passed."
+    },
+    "validation": {
+        "testCases": "Test Cases",
+        "passing": "Passing",
+        "input": "Input:",
+        "expected": "Expected:",
+        "actual": "Actual:",
+        "match": "Match",
+        "noMatch": "No Match",
+        "error": "Error:"
     }
   }
 }

@@ -86,7 +86,7 @@ export const AboutSection: React.FC = () => {
             </div>
 
             <div className="text-center pt-8 text-xs text-muted-foreground">
-                <p>RegexLearning v{process.env.npm_package_version || '1.0.0'}</p>
+                <p>RegexLearning v1.0.0</p>
                 <p className="mt-1">Made with ❤️ by CodingRookie</p>
             </div>
         </div>

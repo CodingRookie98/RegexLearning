@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Challenge } from "@/types/challenge";
 import { ChallengeCard } from "./ChallengeCard";
 
@@ -8,10 +9,12 @@ interface ChallengeListProps {
 }
 
 export function ChallengeList({ challenges, completedChallengeIds, onStartChallenge }: ChallengeListProps) {
+    const { t } = useTranslation();
+
   if (challenges.length === 0) {
     return (
       <div className="text-center py-12 text-muted-foreground">
-        No challenges found for this category.
+            {t('challenges.list.empty')}
       </div>
     );
   }

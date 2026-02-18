@@ -1,3 +1,4 @@
+import { useTranslation } from "react-i18next";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Challenge } from "@/types/challenge";
 import { DifficultyBadge } from "./DifficultyBadge";
@@ -12,6 +13,8 @@ interface ChallengeCardProps {
 }
 
 export function ChallengeCard({ challenge, isCompleted = false, onStart }: ChallengeCardProps) {
+    const { t } = useTranslation();
+
   return (
     <Card className="flex flex-col h-full hover:shadow-md transition-shadow">
       <CardHeader>
@@ -25,7 +28,7 @@ export function ChallengeCard({ challenge, isCompleted = false, onStart }: Chall
               {isCompleted && (
                 <Badge variant="secondary" className="bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 gap-1">
                   <CheckCircle2 className="w-3 h-3" />
-                  Completed
+                                  {t('challenges.card.completed')}
                 </Badge>
               )}
             </div>
@@ -46,7 +49,7 @@ export function ChallengeCard({ challenge, isCompleted = false, onStart }: Chall
       </CardContent>
       <CardFooter>
         <Button onClick={() => onStart(challenge.id)} className="w-full group">
-          {isCompleted ? "Practice Again" : "Start Challenge"}
+                  {isCompleted ? t('challenges.card.practiceAgain') : t('challenges.card.start')}
           <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
         </Button>
       </CardFooter>

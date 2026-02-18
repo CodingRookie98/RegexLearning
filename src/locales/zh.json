@@ -100,5 +100,45 @@
         "desc": "是一个开源项目，欢迎社区贡献和免费使用。参与这个项目可以帮助您磨炼技能、学习和协作。您可以点击这里，贡献和支持本项目。",
         "action": "立即查看"
     }
+},
+"challenges": {
+    "title": "题库",
+    "subtitle": "探索正则挑战，追踪您的掌握程度。",
+    "list": {
+        "loading": "加载题库中...",
+        "empty": "该分类下没有找到挑战。"
+    },
+    "difficulty": {
+        "all": "全部",
+        "basic": "基础",
+        "intermediate": "进阶",
+        "advanced": "高级"
+    },
+    "card": {
+        "completed": "已完成",
+        "practiceAgain": "再次练习",
+        "start": "开始挑战"
+    },
+    "detail": {
+        "loading": "加载挑战中...",
+        "notFound": "未找到挑战。",
+        "description": "问题描述",
+        "goal": "目标",
+        "goal1": "编写一个匹配所有正向测试用例的正则表达式。",
+        "goal2": "确保它不匹配任何负向测试用例。",
+        "regexLabel": "正则表达式",
+        "regexPlaceholder": "在此输入正则表达式...",
+        "success": "太棒了！所有测试用例均通过。"
+    },
+    "validation": {
+        "testCases": "测试用例",
+        "passing": "通过",
+        "input": "输入:",
+        "expected": "预期:",
+        "actual": "实际:",
+        "match": "匹配",
+        "noMatch": "不匹配",
+        "error": "错误:"
+    }
   }
 }
