@@ -4,7 +4,44 @@
     "learn": "学习",
     "practice": "练习",
     "sandbox": "沙盒",
-    "cheatsheet": "速查表"
+    "cheatsheet": "速查表",
+    "challenges": "题库",
+    "settings": "设置"
+},
+"settings": {
+    "title": "设置",
+    "subtitle": "管理偏好设置和数据",
+    "appearance": {
+        "title": "外观",
+        "desc": "自定义应用程序的外观",
+        "theme": "主题",
+        "light": "浅色",
+        "dark": "深色",
+        "system": "系统"
+    },
+    "language": {
+        "title": "语言",
+        "desc": "选择您偏好的语言",
+        "select": "语言"
+    },
+    "data": {
+        "title": "数据管理",
+        "desc": "管理您的学习进度和数据",
+        "resetLabel": "重置进度",
+        "resetHelp": "这将删除您所有的进度和成就。此操作无法撤销。",
+        "resetBtn": "重置进度",
+        "resetConfirm": "您确定要重置所有进度吗？此操作无法撤销。",
+        "resetSuccess": "进度重置成功。",
+        "resetError": "重置进度失败。"
+    },
+    "about": {
+        "github": "源代码",
+        "credits": "致谢",
+        "creditsDesc": "灵感来源于 regexlearn.com",
+        "contact": "联系方式",
+        "quote": "有些人遇到问题时会想：“我知道了，我会用正则表达式。” 现在他们有两个问题了。",
+        "quoteAuthor": "杰米·扎温斯基"
+    }
   },
   "common": {
     "tryAgain": "重试",

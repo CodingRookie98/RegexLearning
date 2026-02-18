@@ -25,4 +25,12 @@ export class StoreService {
     progress.lastTopicId = topicId;
     await this.saveUserProgress(progress);
   }
+
+    static async resetUserProgress(): Promise<void> {
+        const emptyProgress: UserProgress = {
+            completedTopics: {},
+            lastTopicId: undefined
+        };
+        await this.saveUserProgress(emptyProgress);
+    }
 }

@@ -11,12 +11,13 @@ import { HomePage } from './features/home/HomePage';
 import { AppLayout } from './components/layout/AppLayout';
 import { ThemeToggle } from './components/theme-toggle';
 import { cn } from './lib/utils';
-import { Home, BookOpen, FlaskConical, FileText, Puzzle } from 'lucide-react';
+import { SettingsPage } from './features/settings/SettingsPage';
+import { Home, BookOpen, FlaskConical, FileText, Puzzle, Settings } from 'lucide-react';
 
-type View = 'home' | 'learn' | 'sandbox' | 'cheatsheet' | 'challenges';
+type View = 'home' | 'learn' | 'sandbox' | 'cheatsheet' | 'challenges' | 'settings';
 
 function App() {
-    const { t, i18n } = useTranslation();
+    const { t } = useTranslation();
     const [currentView, setCurrentView] = useState<View>('home');
     const [selectedChallengeId, setSelectedChallengeId] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -32,6 +33,7 @@ function App() {
                 return <ChallengeDetail challengeId={selectedChallengeId} onBack={() => setSelectedChallengeId(null)} />;
             }
             return <ChallengesPage onNavigateToChallenge={setSelectedChallengeId} />;
+        case 'settings': return <SettingsPage />;
         default: return <HomePage onNavigate={setCurrentView} />;
     }
   };
@@ -42,6 +44,7 @@ function App() {
         { id: 'sandbox', label: 'Sandbox', icon: <FlaskConical className="w-5 h-5" /> },
         { id: 'cheatsheet', label: 'Cheatsheet', icon: <FileText className="w-5 h-5" /> },
         { id: 'challenges', label: 'Question Bank', icon: <Puzzle className="w-5 h-5" /> },
+        { id: 'settings', label: 'Settings', icon: <Settings className="w-5 h-5" /> },
   ];
 
     const sidebarContent = (
@@ -88,31 +91,6 @@ function App() {
             </button>
                 ))}
             </nav>
-
-            <div className="p-4 border-t border-sidebar-border space-y-4">
-                {isSidebarOpen && (
-                    <div className="text-xs font-medium text-sidebar-foreground/50 uppercase tracking-wider mb-2 px-2">
-                        Settings
-                    </div>
-                )}
-
-                <div className={`flex flex-col gap-3 ${!isSidebarOpen ? 'items-center' : ''}`}>
-                    <div className="relative group w-full">
-                        <select
-                            aria-label="Language"
-                            value={i18n.language}
-                            onChange={(e) => i18n.changeLanguage(e.target.value)}
-                            className={cn(
-                                "appearance-none bg-sidebar-accent border-none rounded-md py-1.5 pl-3 pr-8 text-sm focus:ring-2 focus:ring-ring cursor-pointer w-full text-sidebar-foreground",
-                                !isSidebarOpen && "w-full px-1 text-center"
-                            )}
-                        >
-                            <option value="en">{isSidebarOpen ? 'English' : 'EN'}</option>
-                            <option value="zh">{isSidebarOpen ? '中文' : 'ZH'}</option>
-                        </select>
-                    </div>
-                </div>
-          </div>
         </div>
     );
 
