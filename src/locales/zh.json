@@ -1,6 +1,7 @@
 {
   "welcome": "欢迎使用正则学习",
   "nav": {
+    "home": "首页",
     "learn": "学习",
     "practice": "练习",
     "sandbox": "沙盒",

@@ -1,6 +1,7 @@
 {
   "welcome": "Welcome to Regex Learning",
   "nav": {
+    "home": "Home",
     "learn": "Learn",
     "practice": "Practice",
     "sandbox": "Sandbox",
