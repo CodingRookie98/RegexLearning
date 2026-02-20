@@ -140,6 +140,8 @@ jobs:
     name: Update Unreleased Section
     needs: [extract-changelog, build-and-release]
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     if: github.event_name == 'push'
     steps:
       - name: Checkout repository
