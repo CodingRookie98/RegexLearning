@@ -26,7 +26,7 @@ export function FilterBar({ selectedDifficulty, onSelect, className }: FilterBar
             selectedDifficulty === filter && "bg-background shadow-sm hover:bg-background"
           )}
         >
-              {t(`challenges.difficulty.${filter.toLowerCase()}`)}
+              {t(`challenges.difficulty.${filter.toLowerCase()}` as any)}
         </Button>
       ))}
     </div>

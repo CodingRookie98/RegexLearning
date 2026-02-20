@@ -6,7 +6,6 @@ import { useTheme } from 'next-themes';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Label } from '@/components/ui/label';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { AboutSection } from './components/AboutSection';
 import { StoreService } from '@/services/storeService';
 import { ChallengeProgressService } from '@/services/challengeProgressService';
@@ -59,7 +58,7 @@ export const SettingsPage: React.FC = () => {
                                             : 'text-muted-foreground hover:text-foreground'
                                             }`}
                                     >
-                                        {t(`settings.appearance.${mode}`)}
+                                        {t(`settings.appearance.${mode}` as any)}
                                     </button>
                                 ))}
                             </div>
