@@ -2,7 +2,7 @@
   "$schema": "../node_modules/@tauri-apps/cli/config.schema.json",
   "productName": "regex-learning",
   "version": "0.1.0",
-  "identifier": "com.tauri.dev",
+"identifier": "com.regexlearning.app",
   "build": {
     "frontendDist": "../dist",
     "devUrl": "http://127.0.0.1:1420",
